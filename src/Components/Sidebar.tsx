@@ -34,8 +34,8 @@ export default function SidebarComponent() {
                 <MenuItem href="/">Home</MenuItem>
                 <MenuItem href="/products">Products</MenuItem>
                 <SubMenu label="Socials">
-                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks}>GitHub</MenuItem>
-                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks}>LinkedIn</MenuItem>
+                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks} onClick={() => handleSidebar()}>GitHub</MenuItem>
+                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks} onClick={() => handleSidebar()}>LinkedIn</MenuItem>
                 </SubMenu>
                 </Menu>
             </Sidebar>
