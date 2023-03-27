@@ -26,6 +26,7 @@ export default function SidebarComponent() {
 
     return (
         <header>
+            {/* Menu SIDEBAR */}
             <Sidebar className={styles.container} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
                 <Menu className={styles.menu}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
@@ -38,6 +39,7 @@ export default function SidebarComponent() {
                 </SubMenu>
                 </Menu>
             </Sidebar>
+            {/* Menu HEADER */}
             <div className={styles.headerContainer}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <LogoComponent />

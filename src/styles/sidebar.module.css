@@ -22,7 +22,7 @@
     color: #000;
 }
 .headerContainer span{
-    place-self: left;
+    place-self: center;
 }
 .icon{
     display: none;
@@ -40,7 +40,9 @@
 .sidebarLogoContainer svg{
     place-self: center;
 }
-
+.menu:nth-child(1){
+    margin: 15px;
+}
 
 @media (min-width: 500px){
     .container{
@@ -51,8 +53,12 @@
         width: 40vw;
         background-color: var(--verde);
     }
+    .menu:nth-child(1){
+        margin: 0;
+    }
     .headerContainer{
         grid-template-columns: 10% 45% 15% 15% 15%;
+        height: 5vh;
     }
     .icon{
         place-self: center;
