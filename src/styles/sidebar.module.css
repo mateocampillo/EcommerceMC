@@ -2,17 +2,89 @@
     position: absolute !important;
     z-index: 10;
     background-color: var(--verde);
+    border: none;
+    color: #000;
+    font-size: 1.4rem;
 }
 .container div{
     background-color: transparent;
 }
 
-@media (min-width: 768px){
+.headerContainer{
+    background-color: var(--verde);
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 30% 70%;
+}
+.headerContainer a{
+    place-self: center;
+    color: #000;
+}
+.headerContainer span{
+    place-self: left;
+}
+.icon{
+    display: none;
+}
+.sidebarLinks{
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+.sidebarLogoContainer, .sidebarLogoContainer a{
+    display: grid;
+    width: 100%;
+}
+.sidebarLogoContainer svg{
+    place-self: center;
+}
+
+
+@media (min-width: 500px){
     .container{
         background-color: transparent;
+        border: none;
     }
     .menu{
-        width: 15vw;
+        width: 40vw;
         background-color: var(--verde);
+    }
+    .headerContainer{
+        grid-template-columns: 10% 45% 15% 15% 15%;
+    }
+    .icon{
+        place-self: center;
+        width: 100%;
+        font-size: 1.8rem;
+        display: block;
+    }
+    .iconContainer{
+        display: grid;
+    }
+
+    .sidebarLogoContainer{
+        display: none;
+    }
+}
+
+@media (min-width: 768px){
+    .menu{
+        width: 30vw;
+    }
+}
+@media (min-width: 992px){
+    .menu{
+        width: 25vw;
+    }
+}
+@media (min-width: 1200px){
+    .menu{
+        width: 20vw;
+    }
+}
+@media (min-width: 1400px){
+    .menu{
+        width: 15vw;
     }
 }

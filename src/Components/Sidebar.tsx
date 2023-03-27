@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 React.useLayoutEffect = React.useEffect
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
 import styles from '@/styles/sidebar.module.css';
-import Image from 'next/image';
 import Switch from '@mui/material/Switch';
+import LogoComponent from './Logo';
+import {BsGithub, BsLinkedin} from 'react-icons/bs';
+import {FaUserCircle} from 'react-icons/fa';
 import Link from 'next/link';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
@@ -18,22 +20,30 @@ export default function SidebarComponent() {
         checked === false ? setChecked(true) : setChecked(false);
     }
 
+    function handleUser() {
+        console.log('handleUser');
+    }
+
     return (
         <header>
             <Sidebar className={styles.container} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
                 <Menu className={styles.menu}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
+                <div className={styles.sidebarLogoContainer}><LogoComponent /></div>
                 <MenuItem href="/">Home</MenuItem>
                 <MenuItem href="/products">Products</MenuItem>
-                <SubMenu label="Charts">
-                    <MenuItem> Documentation </MenuItem>
-                    <MenuItem> Line charts </MenuItem>
+                <SubMenu label="Socials">
+                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks}>GitHub</MenuItem>
+                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks}>LinkedIn</MenuItem>
                 </SubMenu>
                 </Menu>
             </Sidebar>
-            <div>
+            <div className={styles.headerContainer}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
-                <Link href={'/'}><Image src='/img/logo/logo.png' alt='Imagen de logo' width={100} height={80}/></Link>
+                <LogoComponent />
+                <Link href='https://github.com/mateocampillo' target='_blank'><BsGithub className={styles.icon}/></Link>
+                <Link href='https://www.linkedin.com/in/mateocampillo/' target='_blank'><BsLinkedin className={styles.icon}/></Link>
+                <FaUserCircle className={styles.icon} onClick={handleUser}/>
             </div>
         </header>
     )
