@@ -1,0 +1,18 @@
+.container{
+    position: absolute !important;
+    z-index: 10;
+    background-color: var(--verde);
+}
+.container div{
+    background-color: transparent;
+}
+
+@media (min-width: 768px){
+    .container{
+        background-color: transparent;
+    }
+    .menu{
+        width: 15vw;
+        background-color: var(--verde);
+    }
+}
