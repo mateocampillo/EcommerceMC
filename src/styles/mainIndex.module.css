@@ -2,7 +2,7 @@
     margin-top: 10px;
     max-width: 500px;
     border-radius: 0;
-    box-shadow: none;
+    box-shadow: none !important;
 }
 .card div:nth-child(1){
     background-size: contain;
@@ -16,10 +16,7 @@
 .cardContent p{
     height: 12vh;
     overflow: scroll;
-    box-shadow: 35px 23px 51px -45px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 35px 23px 51px -45px rgba(0,0,0,0.75);
-    -moz-box-shadow: 35px 23px 51px -45px rgba(0,0,0,0.75);
-border: 4px solid #00c9a7;
+    border: 4px solid var(--verde);
     padding: 5px 3px;
 }
 .infoContainer{
