@@ -1,0 +1,30 @@
+.card{
+    margin-top: 10px;
+    max-width: 500px;
+    border-radius: 0;
+    box-shadow: none;
+}
+.card div:nth-child(1){
+    background-size: contain;
+}
+.cardMedia{
+    height: 30vh;
+}
+.cardContent p{
+    height: 12vh;
+    overflow: scroll;
+}
+.infoContainer{
+    margin-bottom: 10px;
+}
+.infoContainer a{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    text-decoration: none;
+    color: #121212;
+    background-color: var(--verde);
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: 10px;
+}
