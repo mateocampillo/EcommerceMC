@@ -10,9 +10,17 @@
 .cardMedia{
     height: 30vh;
 }
+.cardContent{
+    border: none;
+}
 .cardContent p{
     height: 12vh;
     overflow: scroll;
+    box-shadow: 35px 23px 51px -45px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 35px 23px 51px -45px rgba(0,0,0,0.75);
+    -moz-box-shadow: 35px 23px 51px -45px rgba(0,0,0,0.75);
+border: 4px solid #00c9a7;
+    padding: 5px 3px;
 }
 .infoContainer{
     margin-bottom: 10px;
@@ -24,7 +32,7 @@
     text-decoration: none;
     color: #121212;
     background-color: var(--verde);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     border-radius: 5px;
-    padding: 10px;
+    padding: 13px;
 }
