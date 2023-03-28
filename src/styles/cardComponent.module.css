@@ -1,0 +1,36 @@
+.container{
+    height: 35vh;
+    width: 80vw;
+    margin: 20px auto;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, var(--verde), var(--violeta)) 1;
+    max-width: 300px;
+}
+.container div{
+    margin: 10px auto;
+}
+.containerCardImage{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.containerTitle{
+    width: 90%;
+    height: 5vh;
+    overflow: scroll;
+}
+.containerTitle a{
+    text-decoration: none;
+    display: block;
+    margin: 0px auto;
+}
+.containerTitle a h4{
+    font-size: 1.2rem;
+    text-align: center;
+    color: #121212;
+}
+
+.cardImage{
+    width: 100%;
+}

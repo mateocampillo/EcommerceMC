@@ -13,23 +13,31 @@
 .cardContent{
     border: none;
 }
-.cardContent p{
+.cardContent h2{
+    color: var(--verde);
+}
+/* .cardContent p{
     height: 12vh;
     overflow: scroll;
     border: 4px solid var(--verde);
     padding: 5px 3px;
-}
+} */
 .infoContainer{
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 .infoContainer a{
     display: block;
     width: fit-content;
     margin: 0 auto;
     text-decoration: none;
-    color: #121212;
-    background-color: var(--verde);
+    color: #fff;
+    background-color: var(--violeta);
     font-size: 1.4rem;
     border-radius: 5px;
     padding: 13px;
+}
+
+.shopCategories h2{
+    text-align: center;
+    margin: 30px 0 10px;
 }

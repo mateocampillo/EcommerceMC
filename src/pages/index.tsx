@@ -10,6 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import CardComponent from '@/Components/MainCard';
+import Divider from '@mui/material/Divider';
 
 interface apiData{
   id: number;
@@ -33,24 +34,28 @@ function Home({data}: {data:Array<apiData>}) {
             <Card className={styles.card}>
               <CardMedia className={styles.cardMedia} image={data[14].image} title={data[14].title}/>
               <CardContent className={styles.cardContent}>
+                <h2>Product Highlight</h2>
                 <Typography gutterBottom variant="h5" component="div">
                   {data[14].title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                {/* <Typography variant="body2" color="text.secondary">
                   {data[14].description}
-                </Typography>
+                </Typography> */}
               </CardContent>
             </Card>
             <div className={styles.infoContainer}>
                 <Link href={`/products/${data[14].id}`}>Learn more</Link>
               </div>
           </section>
-          <section>
+          <Divider variant='middle'/>
+          <section className={styles.shopCategories}>
             <h2>Shop Our Top Categories</h2>
-            <div><CardComponent title={data[1].title} image={data[1].image}/></div>
-            <div><CardComponent title={data[2].title} image={data[2].image}/></div>
-            <div><CardComponent title={data[3].title} image={data[3].image}/></div>
-            <div><CardComponent title={data[4].title} image={data[4].image}/></div>
+            <div>
+              <CardComponent title={data[1].title} image={data[1].image} id={data[1].id}/>
+              <CardComponent title={data[11].title} image={data[11].image} id={data[1].id}/>
+              <CardComponent title={data[3].title} image={data[3].image} id={data[3].id}/>
+              <CardComponent title={data[8].title} image={data[8].image} id={data[8].id}/>
+            </div>
           </section>
         </main>
         <footer>
