@@ -16,7 +16,7 @@ export default function CardComponent(props:propList) {
     <div className={styles.container}>
       <div><Link href={`/products/${props.id}`} className={styles.containerCardImage}><Image className={styles.cardImage} width={'200'} height={'200'} src={props.image} alt='foto de producto'/></Link></div>
       <Divider variant='middle'/>
-      <div className={styles.containerTitle}><Link href={`/products/${props.id}`}><h4>{props.title}</h4></Link></div>
+      <div className={styles.containerTitle}><Link href={`/products/${props.id}`}><h4>{props.title.toUpperCase()}</h4></Link></div>
     </div>
   )
 }

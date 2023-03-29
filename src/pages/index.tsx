@@ -51,10 +51,10 @@ function Home({data}: {data:Array<apiData>}) {
           <section className={styles.shopCategories}>
             <h2>Shop Our Top Categories</h2>
             <div>
-              <CardComponent title={data[1].title} image={data[1].image} id={data[1].id}/>
-              <CardComponent title={data[11].title} image={data[11].image} id={data[1].id}/>
-              <CardComponent title={data[3].title} image={data[3].image} id={data[3].id}/>
-              <CardComponent title={data[8].title} image={data[8].image} id={data[8].id}/>
+              <CardComponent title={data[1].category} image={data[1].image} id={data[1].id}/>
+              <CardComponent title={data[11].category} image={data[11].image} id={data[11].id}/>
+              <CardComponent title={data[4].category} image={data[4].image} id={data[4].id}/>
+              <CardComponent title={data[14].category} image={data[15].image} id={data[15].id}/>
             </div>
           </section>
         </main>

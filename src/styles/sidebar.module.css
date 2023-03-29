@@ -5,6 +5,7 @@
     border: none;
     color: #000;
     font-size: 1.4rem;
+    height: 100vh;
 }
 .container div{
     background-color: transparent;
@@ -33,6 +34,9 @@
     text-align: center;
 }
 
+.sidebarLogoContainer{
+    margin: 20px auto;
+}
 .sidebarLogoContainer, .sidebarLogoContainer a{
     display: grid;
     width: 100%;
@@ -43,8 +47,18 @@
 .menu:nth-child(1){
     margin: 15px;
 }
-.menu{
-    height: 100vh;
+.copy{
+    position: absolute !important;
+    bottom: 3vh;
+    width: 100%;
+    text-align: center;
+}
+.copy h4{
+    margin-top: 20px;
+}
+.sidebarIcons{
+    color: #000;
+    margin-right: 10px;
 }
 
 @media (min-width: 500px){

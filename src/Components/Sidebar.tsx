@@ -6,7 +6,9 @@ import Switch from '@mui/material/Switch';
 import LogoComponent from './Logo';
 import {BsGithub, BsLinkedin} from 'react-icons/bs';
 import {FaUserCircle} from 'react-icons/fa';
+import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser} from 'react-icons/ai';
 import Link from 'next/link';
+import { Divider } from '@mui/material';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
 
@@ -31,13 +33,28 @@ export default function SidebarComponent() {
                 <Menu className={styles.menu}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <div className={styles.sidebarLogoContainer}><LogoComponent /></div>
-                <MenuItem href="/">Home</MenuItem>
-                <MenuItem href="/products">Products</MenuItem>
-                <SubMenu label="Socials">
-                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks} onClick={() => handleSidebar()}>GitHub</MenuItem>
-                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' className={styles.sidebarLinks} onClick={() => handleSidebar()}>LinkedIn</MenuItem>
+                <MenuItem href="/"><AiOutlineHome className={styles.sidebarIcons}/>Home</MenuItem>
+                <MenuItem><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
+                <Divider variant='middle'/>
+                <SubMenu label="Products">
+                    <MenuItem href='/products/'>All products</MenuItem>
+                    <SubMenu label="Categories">
+                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Women&#39;s Clothing</MenuItem>
+                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Men&#39;s Clothing</MenuItem>
+                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Electronics</MenuItem>
+                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Jewelery</MenuItem>
+                    </SubMenu>
+                </SubMenu>
+                <Divider variant='middle'/>
+                <SubMenu label="My socials">
+                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' rel='noreferrer' className={styles.sidebarLinks} onClick={() => handleSidebar()}><AiOutlineGithub className={styles.sidebarIcons}/>GitHub</MenuItem>
+                    <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' rel='noreferrer' className={styles.sidebarLinks} onClick={() => handleSidebar()}><AiFillLinkedin className={styles.sidebarIcons}/>LinkedIn</MenuItem>
                 </SubMenu>
                 </Menu>
+                <div className={styles.copy}>
+                    <Divider variant='middle'/>
+                    <h4>Mateo Campillo&nbsp;&copy;&nbsp;2023</h4>
+                </div>
             </Sidebar>
             {/* Menu HEADER */}
             <div className={styles.headerContainer}>
