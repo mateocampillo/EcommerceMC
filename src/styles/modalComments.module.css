@@ -1,0 +1,36 @@
+.sidebarIcons{
+    color: #000;
+    margin-right: 10px;
+}
+
+.modalContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 24;
+    padding: 10px;
+}
+
+.modalContainer h2{
+    text-align: center;
+    margin: 5px auto;
+    font-size: 1.3rem;
+}
+.modalContainer form{
+    margin: 20px auto;
+}
+.modalContainer form button{
+    background-color: var(--violeta);
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px;
+    width: 100px;
+    margin: 10px 0 0;
+}
+.input{
+    width: 100%;
+    margin: 10px 0;
+}

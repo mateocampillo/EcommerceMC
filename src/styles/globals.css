@@ -8,3 +8,7 @@
   --verde: #00c9a7;
   --violeta: #845EC2;
 }
+
+.stop-scroll{
+  overflow: hidden;
+}

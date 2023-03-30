@@ -10,6 +10,7 @@ import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser} from 'rea
 import Link from 'next/link';
 import { Divider } from '@mui/material';
 import Script from 'next/script';
+import ModalComments from './ModalComments'
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
 
@@ -21,6 +22,8 @@ export default function SidebarComponent() {
     function handleSidebar(): void {
         collapseSidebar();
         checked === false ? setChecked(true) : setChecked(false);
+        let body: HTMLElement = document.querySelector('body')!;
+        body.classList.contains('stop-scroll') === true ? body.classList.remove('stop-scroll') : body.classList.add('stop-scroll');
     }
 
     function handleUser(): void {
@@ -53,6 +56,7 @@ export default function SidebarComponent() {
                 </SubMenu>
                 </Menu>
                 <div className={styles.copy}>
+                    <ModalComments />
                     <Divider variant='middle'/>
                     <h4>Mateo Campillo&nbsp;&copy;&nbsp;2023</h4>
                 </div>
