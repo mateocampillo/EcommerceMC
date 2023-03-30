@@ -9,6 +9,7 @@ import {FaUserCircle} from 'react-icons/fa';
 import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser} from 'react-icons/ai';
 import Link from 'next/link';
 import { Divider } from '@mui/material';
+import Script from 'next/script';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
 
@@ -17,19 +18,19 @@ export default function SidebarComponent() {
     const {collapseSidebar} = useProSidebar();
     const [checked, setChecked] = useState(false);
 
-    function handleSidebar() {
+    function handleSidebar(): void {
         collapseSidebar();
         checked === false ? setChecked(true) : setChecked(false);
     }
 
-    function handleUser() {
+    function handleUser(): void {
         console.log('handleUser');
     }
 
     return (
         <header>
             {/* Menu SIDEBAR */}
-            <Sidebar className={styles.container} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
+            <Sidebar id='menuSidebar' className={styles.container} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
                 <Menu className={styles.menu}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <div className={styles.sidebarLogoContainer}><LogoComponent /></div>
@@ -64,6 +65,18 @@ export default function SidebarComponent() {
                 <Link href='https://www.linkedin.com/in/mateocampillo/' target='_blank'><BsLinkedin className={styles.icon}/></Link>
                 <FaUserCircle className={styles.icon} onClick={handleUser}/>
             </div>
+            <Script
+                id="sidebarMostrarScript"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        function retrasarSidebarDisplay() {
+                            document.getElementById('menuSidebar').style.display = 'block'
+                        }
+                        setTimeout(retrasarSidebarDisplay, 300);
+                    `,
+                }}
+            />
         </header>
     )
 }

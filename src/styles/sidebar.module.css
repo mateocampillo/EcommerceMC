@@ -5,7 +5,8 @@
     border: none;
     color: #000;
     font-size: 1.4rem;
-    height: 100vh;
+    height: 100dvh;
+    display: none;
 }
 .container div{
     background-color: transparent;
