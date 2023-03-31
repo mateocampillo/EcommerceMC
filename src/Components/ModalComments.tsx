@@ -22,7 +22,7 @@ export default function BasicModal() {
 
     const sendEmail: FormEventHandler = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        emailjs.sendForm('contact_storehub', 'contact_form', form.current!, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
+        emailjs.sendForm('contact_storehub', 'contact_form', form.current!, 'AEwW306LNkaU8JGZH')
             .then((result) => {
                 handleClose();
                 Swal.fire({
