@@ -55,18 +55,23 @@ export default function BasicModal() {
                     </Typography>
                     <form ref={form} onSubmit={sendEmail} id="contact-form">
                         <div>
-                            <TextField id="inputName" className={styles.input} name='user_name' label="Full Name" variant="outlined" type='text' color='secondary' required inputProps={{minLength: 3}}
+                            <div className={styles.inputContainer}>
+                                <TextField id="inputName" className={styles.input} name='user_name' label="Full Name" variant="outlined" type='text' color='secondary' required inputProps={{minLength: 3}}
                                 onChange={(e) => setFullNameValue(e.target.value)}
                                 error={fullNameValue.length <= 2}
-                                helperText={fullNameValue.length <= 2 ? "Minimun length: 3" : ""}/>
-                            <TextField id="inputEmail" className={styles.input} name='user_email' label="Email" variant="outlined" type='email' color='secondary' required
-                                onChange={(e) => setEmailValue(e.target.value)}
-                                error={!emailValue.includes('@')}
-                                helperText={!emailValue? "Introduce an email" : "" || !emailValue.includes('@')? 'Invalid email' : ''}/>
-                            <TextField id="inputMessage" className={styles.input} name='message' variant="outlined" label="Message" multiline type='text' color='secondary' maxRows={4} required inputProps={{minLength: 10}}
-                                onChange={(e) => setMessageValue(e.target.value)}
-                                error={messageValue.length < 10}
-                                helperText={messageValue.length < 10? "Minimun length: 10" : ""}/>
+                                helperText={fullNameValue.length <= 2 ? "Minimun length: 3" : ""}/></div>
+                            <div className={styles.inputContainer}>
+                                <TextField id="inputEmail" className={styles.input} name='user_email' label="Email" variant="outlined" type='email' color='secondary' required
+                                    onChange={(e) => setEmailValue(e.target.value)}
+                                    error={!emailValue.includes('@')}
+                                    helperText={!emailValue? "Introduce an email" : "" || !emailValue.includes('@')? 'Invalid email' : ''}/>
+                            </div>
+                            <div className={styles.inputContainer}>
+                                <TextField id="inputMessage" className={styles.input} name='message' variant="outlined" label="Message" multiline type='text' color='secondary' maxRows={4} required inputProps={{minLength: 10}}
+                                    onChange={(e) => setMessageValue(e.target.value)}
+                                    error={messageValue.length < 10}
+                                    helperText={messageValue.length < 10? "Minimun length: 10" : ""}/>
+                            </div>
                             <Button id="buttonSubmit" type='submit'>Send</Button>
                         </div>
                     </form>
