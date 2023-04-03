@@ -1,7 +1,8 @@
 import React from 'react';
 React.useLayoutEffect = React.useEffect
 import HeadComponent from '@/Components/Head';
-import Sidebar from '@/Components/Sidebar'
+import Sidebar from '@/Components/Sidebar';
+import Footer from '@/Components/Footer';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import styles from '@/styles/mainIndex.module.css';
 import Card from '@mui/material/Card';
@@ -38,9 +39,6 @@ function Home({data}: {data:Array<apiData>}) {
                 <Typography gutterBottom variant="h5" component="div">
                   {data[14].title}
                 </Typography>
-                {/* <Typography variant="body2" color="text.secondary">
-                  {data[14].description}
-                </Typography> */}
               </CardContent>
             </Card>
             <div className={styles.infoContainer}>
@@ -58,9 +56,7 @@ function Home({data}: {data:Array<apiData>}) {
             </div>
           </section>
         </main>
-        <footer>
-          <h2>Footer</h2>
-        </footer>
+        <Footer />
       </ProSidebarProvider>
     </>
   )

@@ -1,0 +1,41 @@
+.container{
+    width: 80%;
+    margin: 0px auto;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 0;
+    margin: 10px 0;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+.box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 24;
+    padding: 10px;
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+}
+
+.titulo{
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.descripcion{
+    margin: 10px auto;
+    font-size: 1.1rem;
+    font-weight: 200;
+}

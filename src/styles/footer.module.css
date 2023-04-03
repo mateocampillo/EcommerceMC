@@ -1,0 +1,36 @@
+.logoContainer{
+    width: fit-content;
+    margin: 10px auto 30px;
+}
+
+.footerContainer{
+    background-color: var(--gris);
+    border-top: 8px solid var(--verde);
+    padding: 10px 0;
+}
+
+.infoContainer h3{
+    text-align: center;
+    color: var(--verde);
+    font-size: 1.4rem;
+    margin: 20px auto;
+    font-family: 'Heebo', sans-serif;
+}
+.infoContainer a{
+    color: #fff;
+    width: 80%;
+    margin: 10px auto;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.1rem;
+    font-family: 'Heebo', sans-serif;
+}
+.infoContainer svg{
+    margin-right: 10px;
+}
+
+.icons{
+    font-size: 1.2rem;
+}

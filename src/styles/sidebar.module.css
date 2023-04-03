@@ -45,6 +45,11 @@
 .sidebarLogoContainer svg{
     place-self: center;
 }
+.menu{
+    position: relative;
+    z-index: 5;
+    background-color: #fff;
+}
 .menu:nth-child(1){
     margin: 15px;
 }
@@ -53,6 +58,7 @@
     bottom: 3vh;
     width: 100%;
     text-align: center;
+    z-index: 3;
 }
 .copy h4{
     margin-top: 20px;

@@ -3,6 +3,7 @@ import HeadComponent from '@/Components/Head';
 import { useRouter } from 'next/router';
 import Sidebar from '@/Components/Sidebar';
 import { ProSidebarProvider } from 'react-pro-sidebar';
+import Footer from '@/Components/Footer';
 
 export default function ProductDetail() {
 
@@ -17,6 +18,7 @@ export default function ProductDetail() {
         <main>
           <h1>producto con id: {id}</h1>
         </main>
+        <Footer />
       </ProSidebarProvider>
     </>
   )

@@ -36,7 +36,7 @@ export default function SidebarComponent() {
             <Sidebar id='menuSidebar' className={styles.container} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
                 <Menu className={styles.menu}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
-                <div className={styles.sidebarLogoContainer}><LogoComponent /></div>
+                <div className={styles.sidebarLogoContainer}><LogoComponent color='#000'/></div>
                 <MenuItem href="/"><AiOutlineHome className={styles.sidebarIcons}/>Home</MenuItem>
                 <MenuItem><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
                 <Divider variant='middle'/>
@@ -64,7 +64,7 @@ export default function SidebarComponent() {
             {/* Menu HEADER */}
             <div className={styles.headerContainer}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
-                <LogoComponent />
+                <LogoComponent color='#000' />
                 <Link href='https://github.com/mateocampillo' target='_blank'><BsGithub className={styles.icon}/></Link>
                 <Link href='https://www.linkedin.com/in/mateocampillo/' target='_blank'><BsLinkedin className={styles.icon}/></Link>
                 <FaUserCircle className={styles.icon} onClick={handleUser}/>
