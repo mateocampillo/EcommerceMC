@@ -9,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MainCard from '@/Components/MainCard';
+import CardsId from '@/Components/CardsId';
 import {useRouter} from 'next/router';
 
 interface ratingObject{
@@ -67,11 +67,11 @@ function ProductList({data}: {data:Array<apiData>}) {
                 {data.map((product) => {
                   if(category === product.category){
                     return (
-                      <MainCard key={product.id} id={product.id} title={product.title} image={product.image}/>
+                      <CardsId key={product.id} id={product.id} title={product.title} image={product.image}/>
                     )
                   } else if(category === 'all'){
                     return (
-                      <MainCard key={product.id} id={product.id} title={product.title} image={product.image}/>
+                      <CardsId key={product.id} id={product.id} title={product.title} image={product.image}/>
                     )
                   }
                 })}
