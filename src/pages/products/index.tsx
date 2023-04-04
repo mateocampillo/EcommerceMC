@@ -26,7 +26,7 @@ interface apiData{
 }
 
 function ProductList({data}: {data:Array<apiData>}) {
-  const [category, setCategory] = React.useState("men's clothing");
+  const [category, setCategory] = React.useState("all");
 
   const handleChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value);
@@ -45,6 +45,7 @@ function ProductList({data}: {data:Array<apiData>}) {
                 <FormControl sx={{ m: 1, minWidth: 80 }}>
                   <InputLabel id="select-label">Category</InputLabel>
                   <Select labelId="select-category" id="select-category" value={category} onChange={handleChange} autoWidth label="Category">
+                    <MenuItem value={"all"}>All</MenuItem>
                     <MenuItem value={"men's clothing"}>Men&#39;s Clothing</MenuItem>
                     <MenuItem value={"women's clothing"}>Women&#39;s Clothing</MenuItem>
                     <MenuItem value={'electronics'}>Electronics</MenuItem>
@@ -57,6 +58,10 @@ function ProductList({data}: {data:Array<apiData>}) {
               <ul>
                 {data.map((product) => {
                   if(category === product.category){
+                    return (
+                      <MainCard key={product.id} id={product.id} title={product.title} image={product.image}/>
+                    )
+                  } else if(category === 'all'){
                     return (
                       <MainCard key={product.id} id={product.id} title={product.title} image={product.image}/>
                     )
