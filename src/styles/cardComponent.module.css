@@ -17,7 +17,7 @@
 
 .containerTitle{
     width: 90%;
-    height: 5vh;
+    height: fit-content;
     overflow: scroll;
 }
 .containerTitle a{
