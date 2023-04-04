@@ -41,12 +41,12 @@ export default function SidebarComponent() {
                 <MenuItem><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
                 <Divider variant='middle'/>
                 <SubMenu label="Products">
-                    <MenuItem href='/products/'>All products</MenuItem>
+                    <MenuItem href='/products?query=all'>All products</MenuItem>
                     <SubMenu label="Categories">
-                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Women&#39;s Clothing</MenuItem>
-                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Men&#39;s Clothing</MenuItem>
-                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Electronics</MenuItem>
-                        <MenuItem href='/products/category' className={styles.sidebarLinks}>Jewelery</MenuItem>
+                        <MenuItem href="/products?query=women's clothing" className={styles.sidebarLinks}>Women&#39;s Clothing</MenuItem>
+                        <MenuItem href="/products?query=men's clothing" className={styles.sidebarLinks}>Men&#39;s Clothing</MenuItem>
+                        <MenuItem href='/products?query=electronics' className={styles.sidebarLinks}>Electronics</MenuItem>
+                        <MenuItem href='/products?query=jewelery' className={styles.sidebarLinks}>Jewelery</MenuItem>
                     </SubMenu>
                 </SubMenu>
                 <Divider variant='middle'/>

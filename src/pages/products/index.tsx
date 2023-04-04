@@ -10,6 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MainCard from '@/Components/MainCard';
+import {useRouter} from 'next/router';
 
 interface ratingObject{
   rate: number;
@@ -26,7 +27,14 @@ interface apiData{
 }
 
 function ProductList({data}: {data:Array<apiData>}) {
-  const [category, setCategory] = React.useState("all");
+
+  const router = useRouter();
+  let queryCategory = router.query.query as string;
+  const [category, setCategory] = React.useState('');
+
+  React.useEffect((): void => {
+    setCategory(queryCategory);
+  }, [queryCategory])
 
   const handleChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value);

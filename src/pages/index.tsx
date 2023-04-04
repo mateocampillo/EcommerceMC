@@ -49,10 +49,10 @@ function Home({data}: {data:Array<apiData>}) {
           <section className={styles.shopCategories}>
             <h2>Shop Our Top Categories</h2>
             <div>
-              <CardComponent title={data[1].category} image={data[1].image} id={data[1].id}/>
-              <CardComponent title={data[11].category} image={data[11].image} id={data[11].id}/>
-              <CardComponent title={data[4].category} image={data[4].image} id={data[4].id}/>
-              <CardComponent title={data[14].category} image={data[15].image} id={data[15].id}/>
+              <CardComponent title={data[1].category} image={data[1].image} category={data[1].category}/>
+              <CardComponent title={data[11].category} image={data[11].image} category={data[11].category}/>
+              <CardComponent title={data[4].category} image={data[4].image} category={data[4].category}/>
+              <CardComponent title={data[14].category} image={data[15].image} category={data[15].category}/>
             </div>
           </section>
         </main>
