@@ -1,6 +1,6 @@
 .container{
     height: fit-content;
-    width: 80vw;
+    width: 80vw !important;
     margin: 30px auto;
     max-width: 300px;
 }
