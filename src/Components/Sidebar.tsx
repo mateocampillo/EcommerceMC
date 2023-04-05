@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 React.useLayoutEffect = React.useEffect
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
 import styles from '@/styles/sidebar.module.css';
@@ -9,7 +9,6 @@ import {FaUserCircle} from 'react-icons/fa';
 import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser} from 'react-icons/ai';
 import Link from 'next/link';
 import { Divider } from '@mui/material';
-import Script from 'next/script';
 import ModalComments from './ModalComments'
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
@@ -29,6 +28,13 @@ export default function SidebarComponent() {
     function handleUser(): void {
         console.log('handleUser');
     }
+
+    useEffect(():void => {
+        function retrasarSidebarDisplay() {
+            document.getElementById('menuSidebar')!.style.display = 'block'
+        }
+        setTimeout(retrasarSidebarDisplay, 300);
+    }, [])
 
     return (
         <header>
@@ -69,18 +75,6 @@ export default function SidebarComponent() {
                 <Link href='https://www.linkedin.com/in/mateocampillo/' target='_blank'><BsLinkedin className={styles.icon}/></Link>
                 <FaUserCircle className={styles.icon} onClick={handleUser}/>
             </div>
-            <Script
-                id="sidebarMostrarScript"
-                strategy="afterInteractive"
-                dangerouslySetInnerHTML={{
-                    __html: `
-                        function retrasarSidebarDisplay() {
-                            document.getElementById('menuSidebar').style.display = 'block'
-                        }
-                        setTimeout(retrasarSidebarDisplay, 300);
-                    `,
-                }}
-            />
         </header>
     )
 }
