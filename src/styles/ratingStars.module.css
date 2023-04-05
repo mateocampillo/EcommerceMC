@@ -4,8 +4,9 @@
     align-items: center !important;
     justify-content: flex-start !important;
     margin: 5px auto;
+    width: 100%;
 }
-.starsContainer{
+.container span{
     color: var(--verde);
     font-size: 1.4rem;
 }
