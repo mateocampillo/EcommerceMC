@@ -1,0 +1,17 @@
+.heading{
+    text-align: center;
+    margin: 20px auto 10px;
+    font-size: 2.5rem;
+}
+
+.category{
+    min-width: 100px;
+    margin: 5px 0 0 20px;
+}
+.category label{
+    color: var(--violeta) !important;
+    font-weight: 600;
+}
+.category fieldset{
+    border-color: var(--violeta) !important;
+}

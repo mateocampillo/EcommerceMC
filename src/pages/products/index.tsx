@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import CardsId from '@/Components/CardsId';
 import {useRouter} from 'next/router';
+import { PT_Sans } from 'next/font/google';
 
 interface ratingObject{
   rate: number;
@@ -26,6 +27,8 @@ interface apiData{
   rating: ratingObject;
 }
 
+const pt_sans = PT_Sans({weight: ['700'], style: ['italic'], subsets: ['latin']})
+
 function ProductList({data}: {data:Array<apiData>}) {
 
   const router = useRouter();
@@ -36,7 +39,7 @@ function ProductList({data}: {data:Array<apiData>}) {
     setCategory(queryCategory);
   }, [queryCategory])
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: SelectChangeEvent) : void => {
     setCategory(event.target.value);
   };
 
@@ -48,34 +51,30 @@ function ProductList({data}: {data:Array<apiData>}) {
         <main>
           <section>
             <div>
-              <h2>Product List</h2>
-              <div>
-                <FormControl sx={{ m: 1, minWidth: 80 }}>
-                  <InputLabel id="select-label">Category</InputLabel>
-                  <Select labelId="select-category" id="select-category" value={category} onChange={handleChange} autoWidth label="Category">
-                    <MenuItem value={"all"}>All</MenuItem>
-                    <MenuItem value={"men's clothing"}>Men&#39;s Clothing</MenuItem>
-                    <MenuItem value={"women's clothing"}>Women&#39;s Clothing</MenuItem>
-                    <MenuItem value={'electronics'}>Electronics</MenuItem>
-                    <MenuItem value={'jewelery'}>Jewelery</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
+              <h2 className={[styles.heading, pt_sans.className].join(" ")}>The best products</h2>
+              <FormControl className={styles.category}>
+                <InputLabel id="select-label">Category</InputLabel>
+                <Select labelId="select-category" id="select-category" value={category} onChange={handleChange} autoWidth label="Category">
+                  <MenuItem value={"all"}>All</MenuItem>
+                  <MenuItem value={"men's clothing"}>Men&#39;s Clothing</MenuItem>
+                  <MenuItem value={"women's clothing"}>Women&#39;s Clothing</MenuItem>
+                  <MenuItem value={'electronics'}>Electronics</MenuItem>
+                  <MenuItem value={'jewelery'}>Jewelery</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div>
-              <ul>
-                {data.map((product) => {
-                  if(category === product.category){
-                    return (
-                      <CardsId key={product.id} id={product.id} title={product.title} image={product.image}/>
-                    )
-                  } else if(category === 'all'){
-                    return (
-                      <CardsId key={product.id} id={product.id} title={product.title} image={product.image}/>
-                    )
-                  }
-                })}
-              </ul>
+              {data.map((product) => {
+                if(category === product.category){
+                  return (
+                    <CardsId key={product.id} id={product.id} title={product.title} image={product.image} rating={product.rating} price={product.price}/>
+                  )
+                } else if(category === 'all'){
+                  return (
+                    <CardsId key={product.id} id={product.id} title={product.title} image={product.image} rating={product.rating} price={product.price}/>
+                  )
+                }
+              })}
             </div>
           </section>
         </main>
