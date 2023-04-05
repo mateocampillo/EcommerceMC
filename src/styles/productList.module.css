@@ -6,7 +6,7 @@
 
 .category{
     min-width: 100px;
-    margin: 5px 0 0 20px;
+    margin: 5px 0 0 20px !important;
 }
 .category label{
     color: var(--violeta) !important;
