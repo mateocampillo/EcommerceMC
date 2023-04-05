@@ -11,7 +11,7 @@ interface propList{
 export default function HalfRating(props:propList) {
   return (
     <Stack className={styles.container}>
-      <Rating name="half-rating-read" defaultValue={props.rating} precision={0.5} readOnly />
+      <Rating className={styles.starsContainer} name="half-rating-read" defaultValue={props.rating} precision={0.5} readOnly />
       <p className={styles.count}>&#40;{props.count}&#41;</p>
     </Stack>
   );

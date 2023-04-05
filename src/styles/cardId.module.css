@@ -1,8 +1,7 @@
 .container{
     height: fit-content;
-    width: 80vw !important;
+    width: 85vw !important;
     margin: 30px auto;
-    max-width: 300px;
 }
 .container div{
     margin: 10px auto;
