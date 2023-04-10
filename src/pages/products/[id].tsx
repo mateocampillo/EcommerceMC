@@ -3,6 +3,7 @@ import HeadComponent from '@/Components/Head';
 import Sidebar from '@/Components/Sidebar';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import Footer from '@/Components/Footer';
+import ProductDetailComponent from '@/Components/ProductDetail';
 
 interface ratingObject{
   rate: number;
@@ -22,11 +23,12 @@ function ProductDetail({data}: {data:apiData}) {
 
   return (
     <>
-      <HeadComponent title='Product Id' />
+      <HeadComponent title='ProductDetail' />
       <ProSidebarProvider>
         <Sidebar />
         <main>
-          <h1>producto {data.title}</h1>
+          <h1>Product Detail</h1>
+          <ProductDetailComponent id={data.id} title={data.title} description={data.description} image={data.image} price={data.price} category={data.category} rating={data.rating}/>
         </main>
         <Footer />
       </ProSidebarProvider>

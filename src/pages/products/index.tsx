@@ -41,6 +41,12 @@ function ProductList({data}: {data:Array<apiData>}) {
 
   const handleChange = (event: SelectChangeEvent) : void => {
     setCategory(event.target.value);
+    router.push({
+      pathname: '/products',
+      query: { query: `${event.target.value}` }
+    }, 
+    undefined, { shallow: true }
+    )
   };
 
   return (
