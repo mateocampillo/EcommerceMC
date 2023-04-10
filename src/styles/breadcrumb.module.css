@@ -1,0 +1,7 @@
+.container a{
+    text-decoration: none;
+}
+.container p{
+    color: var(--gris);
+    text-transform: capitalize;
+}

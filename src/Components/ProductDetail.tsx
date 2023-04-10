@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@/styles/productDetail.module.css';
+import Breadcrumbs from '@/Components/Breadcrumbs';
 
 interface ratingObject{
   rate: number;
@@ -19,7 +20,17 @@ export default function ProductDetail(props:propList) {
 
   return (
     <>
-        <h2 className={styles.h2}>{props.title}</h2>
+        <nav>
+            <Breadcrumbs arr={[
+                {key: 'home', text: 'Home', href: '/'},
+                {key: 'product', text: 'Products', href: '/products?query=all'},
+                {key: 'category', text: `${props.category}`, href: `/products?query=${props.category}`},
+                {key: 'item', text: `${props.title}`, href: `/products/${props.id}`},
+            ]}/>
+        </nav>
+        <section>
+            <h2 className={styles.h2}>{props.title}</h2>
+        </section>
     </>
   )
 }
