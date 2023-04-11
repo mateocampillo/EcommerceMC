@@ -27,7 +27,6 @@ function ProductDetail({data}: {data:apiData}) {
       <ProSidebarProvider>
         <Sidebar />
         <main>
-          <h1>Product Detail</h1>
           <ProductDetailComponent id={data.id} title={data.title} description={data.description} image={data.image} price={data.price} category={data.category} rating={data.rating}/>
         </main>
         <Footer />

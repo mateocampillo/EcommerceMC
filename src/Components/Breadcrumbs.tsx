@@ -2,6 +2,7 @@ import React from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from 'next/link';
 import styles from '@/styles/breadcrumb.module.css';
+import {MdNavigateNext} from 'react-icons/md';
 
 interface bcObject{
     key: string,
@@ -16,7 +17,10 @@ interface propList{
 export default function BasicBreadcrumbs(props: propList) {
   return (
     <div role="presentation">
-      <Breadcrumbs aria-label="breadcrumb" className={styles.container}>
+      <Breadcrumbs 
+        aria-label="breadcrumb"
+        className={styles.container}
+        separator={<MdNavigateNext fontSize="medium" />}>
           {props.arr.map((item) => {
             item.key === 'item' ? item.text = item.text.substring(0,15)+'...' : null;
             return (

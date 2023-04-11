@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from '@/styles/productDetail.module.css';
 import Breadcrumbs from '@/Components/Breadcrumbs';
+import Image from 'next/image';
+import Banner from '@/Components/Banner';
 
 interface ratingObject{
   rate: number;
@@ -20,6 +22,7 @@ export default function ProductDetail(props:propList) {
 
   return (
     <>
+        <Banner />
         <nav>
             <Breadcrumbs arr={[
                 {key: 'home', text: 'Home', href: '/'},
@@ -29,7 +32,10 @@ export default function ProductDetail(props:propList) {
             ]}/>
         </nav>
         <section>
-            <h2 className={styles.h2}>{props.title}</h2>
+            <h1 className={styles.h1}>{props.title}</h1>
+            <div className={styles.imgContainer}>
+              <Image alt='imagen de producto' src={props.image} fill objectFit='contain'/>
+            </div>
         </section>
     </>
   )

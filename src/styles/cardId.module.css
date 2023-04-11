@@ -8,7 +8,9 @@
 }
 .containerCardImage{
     display: block;
-    width: fit-content;
+    width: 90vw;
+    height: 30vh;
+    position: relative;
     margin: 0 auto;
 }
 

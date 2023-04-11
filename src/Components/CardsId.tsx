@@ -21,7 +21,7 @@ export default function CardComponent(props:propList) {
 
   return (
     <div className={styles.container}>
-      <div><Link href={`/products/${props.id}`} className={styles.containerCardImage}><Image className={styles.cardImage} width={'200'} height={'200'} src={props.image} alt='foto de producto'/></Link></div>
+      <div><Link href={`/products/${props.id}`} className={styles.containerCardImage}><Image className={styles.cardImage} fill objectFit='contain' src={props.image} alt='foto de producto'/></Link></div>
       <Divider variant='middle'/>
       <div className={styles.containerTitle}>
         <Link href={`/products/${props.id}`}><h4>{props.title}</h4></Link>
