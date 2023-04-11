@@ -10,8 +10,10 @@ import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser} from 'rea
 import Link from 'next/link';
 import { Divider } from '@mui/material';
 import ModalComments from './ModalComments'
+import { Poppins } from 'next/font/google';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
+const poppins = Poppins({weight: ['300'], style: ['normal'], subsets: ['latin']})
 
 export default function SidebarComponent() {
 
@@ -39,7 +41,7 @@ export default function SidebarComponent() {
     return (
         <header>
             {/* Menu SIDEBAR */}
-            <Sidebar id='menuSidebar' className={styles.container} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
+            <Sidebar id='menuSidebar' className={[styles.container, poppins.className].join(" ")} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
                 <Menu className={styles.menu}>
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <div className={styles.sidebarLogoContainer}><LogoComponent color='#000'/></div>

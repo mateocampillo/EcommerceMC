@@ -3,6 +3,7 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from 'next/link';
 import styles from '@/styles/breadcrumb.module.css';
 import {MdNavigateNext} from 'react-icons/md';
+import { Poppins } from 'next/font/google';
 
 interface bcObject{
     key: string,
@@ -14,12 +15,14 @@ interface propList{
     arr: Array<bcObject>
 }
 
+const poppins = Poppins({weight: ['300'], style: ['normal'], subsets: ['latin']})
+
 export default function BasicBreadcrumbs(props: propList) {
   return (
     <div role="presentation">
       <Breadcrumbs 
         aria-label="breadcrumb"
-        className={styles.container}
+        className={[styles.container, poppins.className].join(" ")}
         separator={<MdNavigateNext fontSize="medium" />}>
           {props.arr.map((item) => {
             item.key === 'item' ? item.text = item.text.substring(0,15)+'...' : null;
