@@ -1,7 +1,9 @@
-.h1{
+.h1Container{
     margin: 30px auto;
-    width: fit-content;
-
+    width: 100vw;
+}
+.h1Container h1{
+    text-align: center;
 }
 
 .imgContainer{
