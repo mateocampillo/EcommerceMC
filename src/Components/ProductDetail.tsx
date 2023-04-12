@@ -51,16 +51,16 @@ export default function ProductDetail(props:propList) {
             </div>
             <div className={styles.infoContainer}>
               <p className={styles.description}>{props.description}</p>
-              <RatingStars rating={props.rating.rate} count={props.rating.count}/>
-              <div>
-                <div className={styles.amountContainer}>
-                  <div className={styles.amount}>
-                    <button>-</button>
-                    <p>1</p>
-                    <button>+</button>
-                  </div>
-                  <p>Only <strong>{stock}</strong> items left! Don&#39;t miss it!</p>
+              <div className={styles.divRatingStars}>
+                <RatingStars rating={props.rating.rate} count={props.rating.count}/>
+              </div>
+              <div className={styles.amountContainer}>
+                <div className={styles.amount}>
+                  <button>-</button>
+                  <p>1</p>
+                  <button>+</button>
                 </div>
+                <p>Only <strong>{stock}</strong> items left! Don&#39;t miss it!</p>
               </div>
               <div className={styles.actionButtons}>
                 <button>Buy Now</button>

@@ -19,7 +19,7 @@ const poppins = Poppins({weight: ['300'], style: ['normal'], subsets: ['latin']}
 
 export default function BasicBreadcrumbs(props: propList) {
   return (
-    <div role="presentation">
+    <div role="presentation" className={styles.divContainer}>
       <Breadcrumbs 
         aria-label="breadcrumb"
         className={[styles.container, poppins.className].join(" ")}

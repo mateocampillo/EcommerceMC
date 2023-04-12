@@ -13,11 +13,16 @@
     margin: 10px;
 }
 
+.infoContainer .divRatingStars{
+    display: flex;
+    justify-content: flex-start;
+}
+
 .infoContainer .description{
     max-height: 10vh;
     overflow: auto;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    margin: 20px auto;
+    font-size: 1rem;
 }
 
 .infoContainer .amountContainer{
@@ -58,7 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin: 15px auto;
+    margin: 30px auto;
 }
 .infoContainer .actionButtons button{
     font-size: 1.4rem;
