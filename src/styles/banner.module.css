@@ -1,6 +1,6 @@
 .banner{
     width: 100vw;
-    height: 5vh;
+    height: 40px;
     background-color: var(--gris-claro);
     border-top: 1px solid #b8bdbb;
     margin-bottom: 10px;
