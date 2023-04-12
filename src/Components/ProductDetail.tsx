@@ -27,7 +27,9 @@ export default function ProductDetail(props:propList) {
   const [stock, setStock] = React.useState<number>(1);
 
   function getRandomInt(max: number){
-    return Math.floor(Math.random() * max);
+    let num = Math.floor(Math.random() * max);
+    num === 0 ? num = 1 : null;
+    return num
   }
   React.useEffect(() => {
     setStock(getRandomInt(20))
