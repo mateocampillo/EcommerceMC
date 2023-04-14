@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import {AiOutlineInfoCircle} from 'react-icons/ai';
@@ -19,7 +19,9 @@ export default function SimplePopper(props: propList) {
 
   return (
     <div>
-      <AiOutlineInfoCircle aria-describedby={id} onClick={handleClick} />
+      <button style={{backgroundColor: 'transparent', border: 'none'}} aria-describedby={id} type="button" onClick={handleClick}>
+        <AiOutlineInfoCircle />
+      </button>
       <Popper id={id} open={open} anchorEl={anchorEl}>
         <Box>
           {props.boxContent}
