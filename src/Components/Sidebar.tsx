@@ -46,7 +46,7 @@ export default function SidebarComponent() {
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <div className={styles.sidebarLogoContainer}><LogoComponent color='#000'/></div>
                 <MenuItem href="/"><AiOutlineHome className={styles.sidebarIcons}/>Home</MenuItem>
-                <MenuItem><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
+                <MenuItem href='/users/login'><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
                 <Divider variant='middle'/>
                 <SubMenu label="Products">
                     <MenuItem href='/products?query=all'>All products</MenuItem>

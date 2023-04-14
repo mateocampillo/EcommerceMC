@@ -43,3 +43,13 @@
     font-size: 1.6rem;
     fill: var(--verde);
 }
+
+.registerHere{
+    width: 90%;
+    margin: 20px auto 10px;
+}
+.registerHere a{
+    color: var(--verde);
+    font-weight: 600;
+    text-decoration: none;
+}

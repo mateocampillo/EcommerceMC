@@ -7,6 +7,7 @@ function FormRegister() {
     const form = useRef<HTMLFormElement>(null);
     const [fullNameValue, setFullNameValue] = useState('');
     const [lastNameValue, setLastNameValue] = useState('');
+    const [usernameValue, setUsernameValue] = useState('');
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [firstPassValue, setFirstPassValue] = useState('');
@@ -26,6 +27,7 @@ function FormRegister() {
                         {
                             email: emailValue,
                             password: passwordValue,
+                            username: usernameValue,
                             name:{
                                 firstname: fullNameValue,
                                 lastname: lastNameValue
@@ -55,6 +57,10 @@ function FormRegister() {
             <div className={styles.container}>
                 <label htmlFor="last_name">Last name</label>
                 <input type="text" name="last_name" id="last_name" required onChange={(e) => setLastNameValue(e.target.value)} minLength={3} maxLength={30}/>
+            </div>
+            <div className={styles.container}>
+                <label htmlFor="username">Username</label>
+                <input type="text" name="username" id="username" required onChange={(e) => setUsernameValue(e.target.value)} minLength={3} maxLength={30}/>
             </div>
             <div className={styles.container}>
                 <label htmlFor="email">Email</label>
