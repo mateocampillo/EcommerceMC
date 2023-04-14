@@ -1,0 +1,40 @@
+.container{
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+.container label{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.container input{
+    font-size: 1.1rem;
+    line-height: 2;
+}
+
+.containerCheckbox{
+    margin: 20px auto;
+}
+.containerCheckbox label{
+    margin-left: 10px;
+}
+.containerCheckbox a{
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+.containerBoton{
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+}
+.containerBoton button{
+    font-size: 1.3rem;
+    padding: 10px;
+    width: 90%;
+    background-color: var(--verde);
+    color: #fff;
+    border: 1px solid var(--gris);
+    border-radius: 30px;
+}
