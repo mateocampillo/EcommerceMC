@@ -6,9 +6,10 @@
 .container label{
     font-weight: 600;
     margin-bottom: 5px;
+    font-size: 1.3rem;
 }
 .container input{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 2;
 }
 
@@ -17,6 +18,7 @@
 }
 .containerCheckbox label{
     margin-left: 10px;
+    font-size: 1.2rem;
 }
 .containerCheckbox a{
     text-decoration: none;
@@ -30,7 +32,7 @@
     text-align: center;
 }
 .containerBoton button{
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     padding: 10px;
     width: 90%;
     background-color: var(--verde);

@@ -1,5 +1,5 @@
 .mainContainer h1{
-    font-size: 1.6rem;
+    font-size: 1.9rem;
 }
 
 .mainContainer .titles{
@@ -11,6 +11,7 @@
 }
 .mainContainer .titles p{
     margin: 10px auto;
+    font-size: 1.1rem;
 }
 .mainContainer .titles a{
     color: var(--verde);
@@ -28,7 +29,7 @@
     margin: 30px auto;
 }
 .sectionContainer h3{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     width: fit-content;
     margin-left: 20px;
 }

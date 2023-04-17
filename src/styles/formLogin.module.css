@@ -6,9 +6,10 @@
 .container label{
     font-weight: 600;
     margin-bottom: 5px;
+    font-size: 1.2rem;
 }
 .container input{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 2;
 }
 
@@ -18,7 +19,7 @@
     text-align: center;
 }
 .containerBoton button{
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     padding: 10px;
     width: 90%;
     background-color: var(--verde);
@@ -33,6 +34,7 @@
 }
 .containerForgot p{
     text-align: right;
+    font-size: 1.2rem;
 }
 .containerForgot a{
     color: var(--gris-medio);
