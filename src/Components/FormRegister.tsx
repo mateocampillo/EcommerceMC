@@ -48,6 +48,8 @@ function FormRegister() {
         }
     }
 
+        //FIX REGISTER FETCH
+
     return (
         <form ref={form} onSubmit={handleForm}>
             <div className={styles.container}>

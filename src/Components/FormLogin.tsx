@@ -1,30 +1,32 @@
-import React, {useState, useRef, FormEventHandler} from 'react';
+import React, {useState, FormEventHandler} from 'react';
 import styles from '@/styles/formLogin.module.css';
 import Link from 'next/link';
 
 function FormRegister() {
 
-    const form = useRef<HTMLFormElement>(null);
     const [usernameValue, setUsernameValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
     const handleForm: FormEventHandler = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        fetch('https://fakestoreapi.com/auth/login', {
-            method:"POST",
-            body: JSON.stringify(
-                {
-                    username: usernameValue,
-                    password: passwordValue,
-                }
-            )
+        console.log(usernameValue);
+        console.log(passwordValue);
+        fetch('https://fakestoreapi.com/auth/login',{
+            method:'POST',
+            body: JSON.stringify({
+                username: usernameValue,
+                password: passwordValue
+            })
         })
-        .then(res => res.json())
-        .then(json => console.log(json))
+            .then(res=>res.json())
+            .then(json=>console.log(json))
     }
 
+
+    //FIX LOGIN FETCH
+    
     return (
-        <form ref={form} onSubmit={handleForm}>
+        <form onSubmit={handleForm}>
             <div className={styles.container}>
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" id="username" required onChange={(e) => setUsernameValue(e.target.value)}/>
