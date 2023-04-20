@@ -12,11 +12,15 @@ import { Divider } from '@mui/material';
 import ModalComments from './ModalComments'
 import { Poppins } from 'next/font/google';
 import { signIn } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
+import Image from 'next/image';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
 const poppins = Poppins({weight: ['300'], style: ['normal'], subsets: ['latin']})
 
 export default function SidebarComponent() {
+
+    const { data, status } = useSession();
 
     const {collapseSidebar} = useProSidebar();
     const [checked, setChecked] = useState(false);
@@ -39,6 +43,21 @@ export default function SidebarComponent() {
         setTimeout(retrasarSidebarDisplay, 300);
     }, [])
 
+    let userButton;
+    if ( status === 'unauthenticated' ) {
+        userButton = <MenuItem onClick={() => {
+                        signIn();
+                    }}><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
+    } else if ( status === 'authenticated') {
+        let img = data.user?.image as string
+        userButton = <MenuItem className={styles.userMenu}><Image alt='imagen de usuario' src={img} width={40} height={30}/>{data.user?.name}</MenuItem>
+    }
+
+    let logoutButton;
+    if ( status === 'authenticated' ) {
+        logoutButton = <MenuItem onClick={() => signOut()}><AiOutlineUser className={styles.sidebarIcons}/>Logout</MenuItem>
+    }
+
     return (
         <header>
             {/* Menu SIDEBAR */}
@@ -47,9 +66,8 @@ export default function SidebarComponent() {
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <div className={styles.sidebarLogoContainer}><LogoComponent color='#000'/></div>
                 <MenuItem href="/"><AiOutlineHome className={styles.sidebarIcons}/>Home</MenuItem>
-                <MenuItem onClick={() => {
-                    signIn();
-                }}><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
+                {userButton}
+                {logoutButton}
                 <Divider variant='middle'/>
                 <SubMenu label="Products">
                     <MenuItem href='/products?query=all'>All products</MenuItem>
@@ -61,7 +79,7 @@ export default function SidebarComponent() {
                     </SubMenu>
                 </SubMenu>
                 <Divider variant='middle'/>
-                <SubMenu label="My socials">
+                <SubMenu label="Author socials">
                     <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' rel='noreferrer' className={styles.sidebarLinks} onClick={() => handleSidebar()}><AiOutlineGithub className={styles.sidebarIcons}/>GitHub</MenuItem>
                     <MenuItem href='https://www.linkedin.com/in/mateocampillo/' target='_blank' rel='noreferrer' className={styles.sidebarLinks} onClick={() => handleSidebar()}><AiFillLinkedin className={styles.sidebarIcons}/>LinkedIn</MenuItem>
                 </SubMenu>

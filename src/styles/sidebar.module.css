@@ -68,6 +68,18 @@
     margin-right: 10px;
 }
 
+.userMenu{
+    width: 100%;
+}
+.userMenu a{
+    width: 100%;
+}
+.userMenu a span{
+    display: flex;
+    align-items: center;
+}
+
+
 @media (min-width: 500px){
     .container{
         background-color: transparent;

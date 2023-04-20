@@ -12,13 +12,11 @@ const SignIn: NextPage = (props): JSX.Element => {
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         //Validate your user info
         e.preventDefault();
-        const res = await signIn('credentials', {
+        await signIn('credentials', {
             username: userInfo.username,
             password: userInfo.password,
-            redirect: false
+            callbackUrl: '/'
         });
-
-        console.log(res);
     }
 
     return (
