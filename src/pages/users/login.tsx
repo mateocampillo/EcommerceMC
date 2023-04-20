@@ -1,5 +1,4 @@
 import React from 'react';
-React.useLayoutEffect = React.useEffect
 import HeadComponent from '@/Components/Head';
 import Sidebar from '@/Components/Sidebar';
 import Footer from '@/Components/Footer';
@@ -8,7 +7,7 @@ import styles from '@/styles/login.module.css';
 import Banner from '@/Components/Banner';
 import Link from 'next/link';
 import Divider from '@mui/material/Divider';
-import FormLogin from '@/Components/FormLogin';
+import SignIn from '@/Components/auth/signin';
 import {Mulish, Roboto_Condensed} from 'next/font/google';
 import Popper from '@/Components/Popper';
 
@@ -30,10 +29,10 @@ function Register() {
             <section className={styles.sectionContainer}>
                 <div className={styles.iconContainer}>
                     <h3 className={roboto_c.className}>Log in with email.</h3>
-                    <Popper boxContent={'username: mor_2314 ; pass: 83r5^_'}/>
+                    <Popper boxContent={'username: userLogin ; pass: 1234'}/>
                 </div>
                 <div className={styles.formContainer}>
-                    <FormLogin />
+                    <SignIn />
                 </div>
                 <Divider variant="middle" />
                 <div className={styles.registerHere}>

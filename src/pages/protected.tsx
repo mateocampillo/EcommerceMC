@@ -1,7 +1,8 @@
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
-import Router from 'next/router'
+import Router from 'next/router';
 import { useEffect } from 'react';
+import Loading from '@/Components/Loading';
 
 const Protected: NextPage = (): JSX.Element => {
 
@@ -9,7 +10,7 @@ const Protected: NextPage = (): JSX.Element => {
     
     useEffect(() => {
         if (status === 'unauthenticated'){
-            Router.replace('/auth/signin');
+            Router.replace('/users/login');
         }
     }, [status]);
 
@@ -23,7 +24,7 @@ const Protected: NextPage = (): JSX.Element => {
     }
 
     return (
-        <div>Loading</div>
+        <Loading />
     )
 }
 
