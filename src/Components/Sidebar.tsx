@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { Divider } from '@mui/material';
 import ModalComments from './ModalComments'
 import { Poppins } from 'next/font/google';
+import { signIn } from 'next-auth/react';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
 const poppins = Poppins({weight: ['300'], style: ['normal'], subsets: ['latin']})
@@ -46,7 +47,9 @@ export default function SidebarComponent() {
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <div className={styles.sidebarLogoContainer}><LogoComponent color='#000'/></div>
                 <MenuItem href="/"><AiOutlineHome className={styles.sidebarIcons}/>Home</MenuItem>
-                <MenuItem href='/users/login'><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
+                <MenuItem onClick={() => {
+                    signIn();
+                }}><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
                 <Divider variant='middle'/>
                 <SubMenu label="Products">
                     <MenuItem href='/products?query=all'>All products</MenuItem>
