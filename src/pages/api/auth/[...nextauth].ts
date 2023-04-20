@@ -32,6 +32,7 @@ const authOptions: NextAuthOptions = {
             },
         }),
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({ token, user, account }: any) {
             // Persist the user id to the token right after signin
