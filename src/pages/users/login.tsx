@@ -7,10 +7,9 @@ import styles from '@/styles/login.module.css';
 import Banner from '@/Components/Banner';
 import Link from 'next/link';
 import Divider from '@mui/material/Divider';
-import SignIn from '@/Components/auth/signin';
+import SignIn from '@/Components/auth/SignIn';
 import {Mulish, Roboto_Condensed} from 'next/font/google';
 import Popper from '@/Components/Popper';
-
 const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 const roboto_c = Roboto_Condensed({weight: ['400'], style: ['normal'], subsets: ['latin']})
 
