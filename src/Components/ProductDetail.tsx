@@ -5,6 +5,9 @@ import Image from 'next/image';
 import Banner from '@/Components/Banner';
 import {Mulish} from 'next/font/google';
 import RatingStars from '@/Components/RatingStars';
+import { useSession } from 'next-auth/react';
+import Router from 'next/router';
+import { isTemplateTail } from 'typescript';
 
 interface ratingObject{
   rate: number;
@@ -24,7 +27,28 @@ const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 
 export default function ProductDetail(props:propList) {
 
+  const { status, data } = useSession() as any;
+
   const [stock, setStock] = React.useState<number>(1);
+  const [productAmount, setProductAmount] = React.useState<number>(1);
+
+  let stockHtml;
+  if (stock <= 5){
+    stockHtml =  <p>Only <strong>{stock}</strong> items left! Don&#39;t miss it!</p>
+  } else {
+    stockHtml =  <p><strong>{stock}</strong> items in stock! Don&#39;t miss it!</p>
+  }
+
+  function amountIncrement(): void {
+    if(productAmount < stock){
+      setProductAmount(productAmount + 1)
+    }
+  }
+  function amountDecrement(): void {
+    if(productAmount > 1){
+      setProductAmount(productAmount - 1)
+    }
+  }
 
   function getRandomInt(max: number){
     let num = Math.floor(Math.random() * max);
@@ -34,6 +58,42 @@ export default function ProductDetail(props:propList) {
   React.useEffect(() => {
     setStock(getRandomInt(20))
   }, [])
+
+  function handleCart (): void {
+    if (status === 'authenticated'){
+
+      let userId = data.user?.userId as number;
+      let oldCart = JSON.parse(localStorage.getItem(`${userId}_cart`)!);
+
+      if (oldCart === null){
+
+        let arr = [];
+        arr.push(`${productAmount}_${props.id}`)
+        localStorage.setItem(`${userId}_cart`, JSON.stringify(arr));
+
+      } else {
+
+        const same = (item:string) => item === props.id.toString();
+
+        let idArr: Array<string> = [];
+        oldCart.forEach((i:string) => {
+          let stringArr: Array<string> = i.split('_');
+          idArr.push(stringArr[1])
+        })
+
+        if (idArr.some(same)){
+          alert('Ya agregaste este producto a tu carrito')
+        } else {
+          oldCart.push(`${productAmount}_${props.id}`)
+          localStorage.setItem(`${userId}_cart`, JSON.stringify(oldCart));
+        }
+
+      }
+
+    } else if (status === 'unauthenticated') {
+      Router.replace('/users/login')
+    }
+  }
 
   return (
     <>
@@ -60,15 +120,16 @@ export default function ProductDetail(props:propList) {
             </div>
             <div className={styles.amountContainer}>
               <div className={styles.amount}>
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
+                <button onClick={() => amountDecrement()}>-</button>
+                <p>{productAmount}</p>
+                <button onClick={() => amountIncrement()}>+</button>
               </div>
-              <p>Only <strong>{stock}</strong> items left! Don&#39;t miss it!</p>
+              <p>Total price: $ <strong>{props.price*productAmount}</strong></p>
             </div>
+            {stockHtml}
             <div className={styles.actionButtons}>
               <button>Buy Now</button>
-              <button>Add To Cart</button>
+              <button onClick={handleCart}>Add To Cart</button>
             </div>
           </div>
         </section>

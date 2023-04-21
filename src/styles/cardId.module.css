@@ -34,22 +34,22 @@
     width: 100%;
 }
 
-.containerBoton{
+.containerDetails{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     margin-top: 20px !important;
 }
-.containerBoton button{
+.containerDetails a{
     background-color: var(--verde);
-    color: #000;
+    color: var(--gris);
     border: none;
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     border-radius: 5px;
 }
-.containerBoton p{
+.containerDetails p{
     color: #000;
     font-size: 1.3rem;
     font-weight: 600;

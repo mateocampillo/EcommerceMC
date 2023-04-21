@@ -68,17 +68,10 @@
     margin-right: 10px;
 }
 
-.userMenu{
-    width: 100%;
+.imagenContainer{
+    padding-left: 30px;
+    margin-bottom: 10px;
 }
-.userMenu a{
-    width: 100%;
-}
-.userMenu a span{
-    display: flex;
-    align-items: center;
-}
-
 
 @media (min-width: 500px){
     .container{

@@ -26,8 +26,8 @@ export default function CardComponent(props:propList) {
       <div className={styles.containerTitle}>
         <Link href={`/products/${props.id}`}><h4>{props.title}</h4></Link>
         <RatingStars rating={props.rating.rate} count={props.rating.count}/>
-        <div className={styles.containerBoton}>
-          <button>Add to cart</button>
+        <div className={styles.containerDetails}>
+          <Link href={`/products/${props.id}`}>Details</Link>
           <p>&#36;{props.price}</p>
         </div>
       </div>

@@ -6,7 +6,8 @@ import Switch from '@mui/material/Switch';
 import LogoComponent from './Logo';
 import {BsGithub, BsLinkedin} from 'react-icons/bs';
 import {FaUserCircle} from 'react-icons/fa';
-import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser} from 'react-icons/ai';
+import {BiLogOutCircle} from 'react-icons/bi';
+import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser,AiOutlineShoppingCart} from 'react-icons/ai';
 import Link from 'next/link';
 import { Divider } from '@mui/material';
 import ModalComments from './ModalComments'
@@ -43,19 +44,20 @@ export default function SidebarComponent() {
         setTimeout(retrasarSidebarDisplay, 300);
     }, [])
 
-    let userButton;
+    let userButtons;
     if ( status === 'unauthenticated' ) {
-        userButton = <MenuItem onClick={() => {
+        userButtons = <MenuItem onClick={() => {
                         signIn();
                     }}><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
     } else if ( status === 'authenticated') {
         let img = data.user?.image as string
-        userButton = <MenuItem className={styles.userMenu}><Image alt='imagen de usuario' src={img} width={40} height={30}/>{data.user?.name}</MenuItem>
-    }
-
-    let logoutButton;
-    if ( status === 'authenticated' ) {
-        logoutButton = <MenuItem onClick={() => signOut()}><AiOutlineUser className={styles.sidebarIcons}/>Logout</MenuItem>
+        userButtons = 
+            <SubMenu label={data.user?.name} id='subMenuUser'>
+                <MenuItem className={styles.sidebarLinks}><Image alt='imagen de usuario' src={img} width={40} height={30}/>My profile</MenuItem>
+                <MenuItem href='/users/cart'><AiOutlineShoppingCart className={styles.sidebarIcons}/>Cart</MenuItem>
+                <MenuItem onClick={() => signOut()}><BiLogOutCircle className={styles.sidebarIcons}/>Logout</MenuItem>
+            </SubMenu>
+                
     }
 
     return (
@@ -66,8 +68,7 @@ export default function SidebarComponent() {
                 <Switch {...label} onChange={() => handleSidebar()} checked={checked}/>
                 <div className={styles.sidebarLogoContainer}><LogoComponent color='#000'/></div>
                 <MenuItem href="/"><AiOutlineHome className={styles.sidebarIcons}/>Home</MenuItem>
-                {userButton}
-                {logoutButton}
+                {userButtons}
                 <Divider variant='middle'/>
                 <SubMenu label="Products">
                     <MenuItem href='/products?query=all'>All products</MenuItem>
