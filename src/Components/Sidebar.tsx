@@ -1,3 +1,4 @@
+'use client';
 import React, {useState, useEffect} from 'react';
 React.useLayoutEffect = React.useEffect
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
@@ -15,6 +16,8 @@ import { Poppins } from 'next/font/google';
 import { signIn } from 'next-auth/react';
 import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
+import { useAppSelector } from '../../store/store';
+import { totalCartItemSelector } from '../../store/features/cartSlice';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
 const poppins = Poppins({weight: ['300'], style: ['normal'], subsets: ['latin']})
@@ -25,6 +28,7 @@ export default function SidebarComponent() {
 
     const {collapseSidebar} = useProSidebar();
     const [checked, setChecked] = useState(false);
+    const totalItems = useAppSelector(totalCartItemSelector);
 
     function handleSidebar(): void {
         collapseSidebar();
@@ -50,11 +54,15 @@ export default function SidebarComponent() {
                         signIn();
                     }}><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
     } else if ( status === 'authenticated') {
-        let img = data.user?.image as string
+        let img = data.user?.image as string;
         userButtons = 
             <SubMenu label={data.user?.name} id='subMenuUser'>
                 <MenuItem className={styles.sidebarLinks}><Image alt='imagen de usuario' src={img} width={40} height={30}/>My profile</MenuItem>
-                <MenuItem href='/users/cart'><AiOutlineShoppingCart className={styles.sidebarIcons}/>Cart</MenuItem>
+                <MenuItem href='/users/cart'><AiOutlineShoppingCart className={styles.sidebarIcons}/>Cart{
+                    !!totalItems && (
+                        <p className={styles.sidebarCartNumber}>{totalItems}</p>
+                    )
+                }</MenuItem>
                 <MenuItem onClick={() => signOut()}><BiLogOutCircle className={styles.sidebarIcons}/>Logout</MenuItem>
             </SubMenu>
                 

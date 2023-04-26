@@ -34,6 +34,14 @@
     color: #000;
     text-align: center;
 }
+.sidebarCartNumber{
+    display: inline;
+    margin-left: 15px;
+    color: #fff;
+    background: red;
+    padding: 5px;
+    border-radius: 25%;
+}
 
 .sidebarLogoContainer{
     margin: 20px auto;

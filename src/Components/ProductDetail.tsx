@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from '@/styles/productDetail.module.css';
 import Breadcrumbs from '@/Components/Breadcrumbs';
@@ -5,9 +6,11 @@ import Image from 'next/image';
 import Banner from '@/Components/Banner';
 import {Mulish} from 'next/font/google';
 import RatingStars from '@/Components/RatingStars';
+import { BsTrash } from 'react-icons/bs';
 import { useSession } from 'next-auth/react';
-import Router from 'next/router';
-import { isTemplateTail } from 'typescript';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import { decrement, increment, productQtyInCartSelector } from '../../store/features/cartSlice';
+import Link from 'next/link';
 
 interface ratingObject{
   rate: number;
@@ -29,70 +32,41 @@ export default function ProductDetail(props:propList) {
 
   const { status, data } = useSession() as any;
 
-  const [stock, setStock] = React.useState<number>(1);
-  const [productAmount, setProductAmount] = React.useState<number>(1);
+  //REDUX SECTION
+  const dispatch = useAppDispatch();
+  const qty = useAppSelector((state) =>
+    productQtyInCartSelector(state, props.id)
+  );
+  let qtyComponent;
+  let qtyWithAmountComponent;
 
-  let stockHtml;
-  if (stock <= 5){
-    stockHtml =  <p>Only <strong>{stock}</strong> items left! Don&#39;t miss it!</p>
+  if(status === 'unauthenticated'){
+    qtyComponent =
+      <Link className={styles.qtyAddToCartLink} href={'/users/login'}>Add to cart</Link>
+  }
+  if(status === 'authenticated'){
+    if(!qty){
+      qtyComponent =
+        <button className={styles.qtyAddToCart} onClick={() => dispatch(increment(props))}>Add to cart</button>
+    }
+    if(qty){
+      qtyWithAmountComponent =
+        <div className={styles.amountQty}>
+          <button onClick={() => dispatch(decrement(props))}>
+            {qty===1 ? (<BsTrash />) : ('-')}
+          </button>
+          <p>{qty}</p>
+          <button onClick={() => dispatch(increment(props))}>+</button>
+        </div>
+    }
+  }
+  //--REDUX SECTION
+
+  let priceWithQty;
+  if(qty){
+    priceWithQty = props.price*qty
   } else {
-    stockHtml =  <p><strong>{stock}</strong> items in stock! Don&#39;t miss it!</p>
-  }
-
-  function amountIncrement(): void {
-    if(productAmount < stock){
-      setProductAmount(productAmount + 1)
-    }
-  }
-  function amountDecrement(): void {
-    if(productAmount > 1){
-      setProductAmount(productAmount - 1)
-    }
-  }
-
-  function getRandomInt(max: number){
-    let num = Math.floor(Math.random() * max);
-    num === 0 ? num = 1 : null;
-    return num
-  }
-  React.useEffect(() => {
-    setStock(getRandomInt(20))
-  }, [])
-
-  function handleCart (): void {
-    if (status === 'authenticated'){
-
-      let userId = data.user?.userId as number;
-      let oldCart = JSON.parse(localStorage.getItem(`${userId}_cart`)!);
-
-      if (oldCart === null){
-
-        let arr = [];
-        arr.push(`${productAmount}_${props.id}`)
-        localStorage.setItem(`${userId}_cart`, JSON.stringify(arr));
-
-      } else {
-
-        const same = (item:string) => item === props.id.toString();
-
-        let idArr: Array<string> = [];
-        oldCart.forEach((i:string) => {
-          let stringArr: Array<string> = i.split('_');
-          idArr.push(stringArr[1])
-        })
-
-        if (idArr.some(same)){
-          alert('Ya agregaste este producto a tu carrito')
-        } else {
-          oldCart.push(`${productAmount}_${props.id}`)
-          localStorage.setItem(`${userId}_cart`, JSON.stringify(oldCart));
-        }
-
-      }
-
-    } else if (status === 'unauthenticated') {
-      Router.replace('/users/login')
-    }
+    priceWithQty = props.price
   }
 
   return (
@@ -119,17 +93,12 @@ export default function ProductDetail(props:propList) {
               <RatingStars rating={props.rating.rate} count={props.rating.count}/>
             </div>
             <div className={styles.amountContainer}>
-              <div className={styles.amount}>
-                <button onClick={() => amountDecrement()}>-</button>
-                <p>{productAmount}</p>
-                <button onClick={() => amountIncrement()}>+</button>
-              </div>
-              <p>Total price: $ <strong>{props.price*productAmount}</strong></p>
+              <p>Total price: $ <strong>{priceWithQty}</strong></p>
             </div>
-            {stockHtml}
             <div className={styles.actionButtons}>
-              <button>Buy Now</button>
-              <button onClick={handleCart}>Add To Cart</button>
+              <button className={styles.buyNow}>Buy Now</button>
+              {qtyComponent}
+              {qtyWithAmountComponent}
             </div>
           </div>
         </section>

@@ -38,26 +38,31 @@
 .infoContainer .amountContainer p{
     font-size: 1.2rem;
 }
-.infoContainer .amount{
+.infoContainer .amountQty{
     display: flex;
     align-items: center;
+    justify-content: space-around;
     background-color: var(--gris-claro);
     width: fit-content;
+    min-width: 150px;
+    min-height: 50px;
     border-radius: 15px;
-    margin: 10px auto;
 }
-.infoContainer .amount p{
+.infoContainer .amountQty p{
     font-size: 1.2rem;
     font-weight: 600;
 }
-.infoContainer .amount button{
+.infoContainer .amountQty button{
     font-size: 1.6rem;
     background-color: transparent;
-    color: #000;
+    color: var(--verde);
     padding: 5px;
     border-radius: 5px;
     border: none;
     min-width: 50px;
+}
+.infoContainer .amountQty button:nth-child(1){
+    color: rgb(185, 71, 71);
 }
 .infoContainer .amountContainer p{
     width: 50%;
@@ -69,18 +74,33 @@
     justify-content: space-around;
     margin: 30px auto;
 }
-.infoContainer .actionButtons button{
+.infoContainer .actionButtons .buyNow{
+    background-color: var(--verde);
+    color: #fff;
     font-size: 1.4rem;
     padding: 10px;
     min-width: 150px;
     border-radius: 15px;
     border: none;
 }
-.infoContainer .actionButtons button:nth-child(1){
-    background-color: var(--verde);
-    color: #fff;
-}.infoContainer .actionButtons button:nth-child(2){
+.infoContainer .actionButtons .qtyAddToCart{
     border: 1px solid var(--verde);
     color: var(--verde);
     background-color: transparent;
+    font-size: 1.4rem;
+    padding: 10px;
+    min-width: 150px;
+    border-radius: 15px;
+}
+.infoContainer .actionButtons .qtyAddToCartLink{
+    border: 1px solid var(--verde);
+    color: var(--verde);
+    background-color: transparent;
+    font-size: 1.4rem;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    min-width: 150px;
+    border-radius: 15px;
+    text-decoration: none;
 }
