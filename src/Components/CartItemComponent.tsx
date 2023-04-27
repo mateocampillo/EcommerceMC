@@ -10,6 +10,7 @@ export default function CartItemComponent({cartItem}: Props) {
   return (
     <div>
         <p>{cartItem.product.title}</p>
+        <p>{cartItem.qty}</p>
     </div>
   )
 

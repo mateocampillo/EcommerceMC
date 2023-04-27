@@ -48,6 +48,11 @@ export default function SidebarComponent() {
         setTimeout(retrasarSidebarDisplay, 300);
     }, [])
 
+    function logOutAndEraseCart(): void {
+        signOut();
+        localStorage.removeItem('persist:root');
+    }
+
     let userButtons;
     if ( status === 'unauthenticated' ) {
         userButtons = <MenuItem onClick={() => {
@@ -63,7 +68,7 @@ export default function SidebarComponent() {
                         <p className={styles.sidebarCartNumber}>{totalItems}</p>
                     )
                 }</MenuItem>
-                <MenuItem onClick={() => signOut()}><BiLogOutCircle className={styles.sidebarIcons}/>Logout</MenuItem>
+                <MenuItem onClick={() => logOutAndEraseCart()}><BiLogOutCircle className={styles.sidebarIcons}/>Logout</MenuItem>
             </SubMenu>
                 
     }

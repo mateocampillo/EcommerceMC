@@ -41,7 +41,7 @@ export const cartSlice = createSlice({
                     (el) => el.product.id !== action.payload.id
                 );
             }
-        }
+        },
     },
 });
 
