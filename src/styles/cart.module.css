@@ -120,3 +120,29 @@
     border: 1px solid var(--verde);
     border-radius: 10px;
 }
+
+.emptyCartContainer{
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: 0px 10px;
+}
+.emptyCartContainer div{
+    position: relative;
+    height: 40%;
+}
+.emptyCartContainer p{
+    font-size: 1.3rem;
+}
+.emptyCartContainer a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    background-color: var(--verde);
+    color: #fff;
+    width: fit-content;
+    padding: 10px;
+    margin: 0px auto;
+    border-radius: 10px;
+}

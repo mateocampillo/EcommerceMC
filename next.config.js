@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   images: {
-    domains: ['fakestoreapi.com', 'robohash.org'],
+    domains: ['fakestoreapi.com', 'robohash.org', 'blogs.unsw.edu.au'],
     formats: ['image/avif', 'image/webp'],
   },
   env: {
