@@ -73,7 +73,7 @@ const Cart: NextPage = (): JSX.Element => {
                                     <CartItemComponent cartItem={item} key={item.product.id}/>
                                 ))}
                             </ul>
-                            <p className={styles.priceTotal}>Total: <strong>&#36; {totalPrice}</strong></p>
+                            <p className={styles.priceTotal}>Total: <strong>&#36; {totalPrice.toFixed(2)}</strong></p>
                         </section>
                         <section className={[styles.section, styles.userInformation].join(" ")}>
                             <h2>Delivery Information</h2>
@@ -129,7 +129,7 @@ const Cart: NextPage = (): JSX.Element => {
                             </div>
                             <div className={styles.pricesContainer}>
                                 <div className={styles.div}>
-                                    <p><strong>Subtotal: $ {totalPrice}</strong></p>
+                                    <p><strong>Subtotal: $ {totalPrice.toFixed(2)}</strong></p>
                                 </div>
                                 <div className={styles.div}>
                                     <p><strong>Tax &#40;10&#37;&#41;: $ {taxPrice.toFixed(2)}</strong></p>
