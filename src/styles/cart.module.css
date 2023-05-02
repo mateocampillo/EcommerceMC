@@ -1,0 +1,22 @@
+.section{
+    margin: 15px 10px;
+}
+
+.cart h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart .priceTotal{
+    text-align: right;
+    margin: 15px 10px;
+}
+
+.userInformation{
+    margin-top: 20px;
+}
+
+.userInformation h2{
+    text-align: center;
+    margin-bottom: 20px;
+}

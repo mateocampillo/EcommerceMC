@@ -1,0 +1,19 @@
+.li{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.titleQty{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 30%;
+}
+
+.titleQty a{
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 10px;
+}

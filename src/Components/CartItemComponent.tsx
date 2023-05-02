@@ -1,5 +1,8 @@
-import React from 'react'
-import { CartItem } from '../../interfaces'
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CartItem } from '../../interfaces';
+import styles from '@/styles/cartItem.module.css';
 
 interface Props {
     cartItem: CartItem
@@ -7,11 +10,17 @@ interface Props {
 
 export default function CartItemComponent({cartItem}: Props) {
 
+  cartItem.product.title = cartItem.product.title.substring(0,18)+'...';
+
   return (
-    <div>
-        <p>{cartItem.product.title}</p>
-        <p>{cartItem.qty}</p>
-    </div>
+    <li className={styles.li}>
+      <Link href={`/products/${cartItem.product.id}`}><Image alt='product img' src={cartItem.product.image} width={100} height={100}/></Link>
+      <div className={styles.titleQty}>
+        <Link href={`/products/${cartItem.product.id}`}><p>{cartItem.product.title}</p></Link>
+        <p><strong>Quantity: {cartItem.qty}</strong></p>
+      </div>
+      <p><strong>&#36; {cartItem.product.price * cartItem.qty}</strong></p>
+    </li>
   )
 
 }
