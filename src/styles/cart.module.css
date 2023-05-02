@@ -14,6 +14,8 @@
 
 .userInformation{
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .userInformation h2{
@@ -37,4 +39,84 @@
     margin: 0px auto;
     border-radius: 5px;
     border: 1px solid #b2b2b2;
+}
+
+.orderSummary h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.orderSummary .cardsImagesContainer p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 80%;
+    margin: 0px auto;
+}
+
+.orderSummary .cardsImagesContainer .cardsImages{
+    width: 60%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.orderSummary .cardInputContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 15px auto;
+}
+
+.orderSummary .cardInputContainer label{
+    margin-bottom: 3px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.orderSummary .cardInputContainer input{
+    font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #b2b2b2;
+}
+.orderSummary .expireCCV{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.orderSummary .expireCCV input{
+    font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #b2b2b2;
+    width: 60%;
+    text-align: center;
+}
+
+.pricesContainer{
+    width: 85%;
+    margin: 20px auto;
+}
+.pricesContainer div{
+    margin: 20px auto;
+}
+.pricesContainer div p{
+    font-size: 1.2rem;
+}
+
+.payButton{
+    margin: 0px auto 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.payButton button{
+    font-size: 1.5rem;
+    padding: 5px;
+    width: 30%;
+    background-color: var(--verde);
+    color: #fff;
+    border: 1px solid var(--verde);
+    border-radius: 10px;
 }
