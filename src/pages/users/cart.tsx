@@ -51,7 +51,26 @@ const Cart: NextPage = (): JSX.Element => {
                         </section>
                         <section className={[styles.section, styles.userInformation].join(" ")}>
                             <h2>Delivery Information</h2>
-                            <p>user logged: {data.user?.name}</p>
+                            <div className={styles.inputContainer}>
+                                <p>Full name:</p>
+                                <input type="text" value={data.user?.name} required/>
+                            </div>
+                            <div className={styles.inputContainer}>
+                                <p>Contact Email:</p>
+                                <input type="email" value={data.user?.email} required/>
+                            </div>
+                            <div className={styles.inputContainer}>
+                                <p>Street Name:</p>
+                                <input type="text" value={data.user?.address.street_name} required/>
+                            </div>
+                            <div className={styles.inputContainer}>
+                                <p>Street Address:</p>
+                                <input type="text" value={data.user?.address.street_address} required/>
+                            </div>
+                            <div className={styles.inputContainer}>
+                                <p>City:</p>
+                                <input type="text" value={data.user?.address.city} required/>
+                            </div>
                         </section>
                         <section className={styles.section}>
                             <h2>Order summary</h2>
