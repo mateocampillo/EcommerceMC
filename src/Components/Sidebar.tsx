@@ -62,7 +62,7 @@ export default function SidebarComponent() {
         let img = data.user?.image as string;
         userButtons = 
             <SubMenu label={data.user?.name} id='subMenuUser'>
-                <MenuItem className={styles.sidebarLinks}><Image alt='imagen de usuario' src={img} width={40} height={30}/>My profile</MenuItem>
+                <MenuItem href='/users/profile' className={styles.sidebarLinks}><Image alt='imagen de usuario' src={img} width={40} height={30}/>My profile</MenuItem>
                 <MenuItem href='/users/cart'><AiOutlineShoppingCart className={styles.sidebarIcons}/>Cart{
                     !!totalItems && (
                         <p className={styles.sidebarCartNumber}>{totalItems}</p>

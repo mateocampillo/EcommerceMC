@@ -19,6 +19,7 @@ import CartItemComponent from '@/Components/CartItemComponent';
 import Image from 'next/image';
 import { Divider } from '@mui/material';
 import Link from 'next/link';
+import Swal from 'sweetalert2';
 
 const Cart: NextPage = (): JSX.Element => {
 
@@ -33,6 +34,16 @@ const Cart: NextPage = (): JSX.Element => {
             Router.replace('/users/login');
         }
     }, [status]);
+
+    function handlePay(): void {
+        localStorage.removeItem('persist:root');
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Item Purchased.'
+        })
+        Router.replace('/');
+    }
 
     if (status === 'authenticated'){
 
@@ -141,7 +152,7 @@ const Cart: NextPage = (): JSX.Element => {
                             </div>
                         </section>
                         <div className={styles.payButton}>
-                            <button>Pay</button>
+                            <button onClick={handlePay}>Pay</button>
                         </div>
                     </main>
                     <Footer />
