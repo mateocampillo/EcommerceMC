@@ -1,0 +1,51 @@
+/* PROFILE COMPONENT */
+.profileContainer nav{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.profileContainer nav div{
+    background-color: var(--verde-medio);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 10vh;
+}
+.profileContainer nav div h2{
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.profileContainer nav ul{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 33% 33% 34%;
+    grid-template-rows: 100%;
+}
+.profileContainer nav ul li{
+    border: 1px solid var(--gris);
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: var(--celeste);
+}
+.profileContainer nav ul li:nth-child(1){
+    background-color: var(--celeste-oscuro);
+}
+
+
+/* PERSONAL DETAILS COMPONENT */
+.personalDetailsDiv{
+
+}
+
+/* ORDERS COMPONENT */
+.ordersDiv{
+
+}

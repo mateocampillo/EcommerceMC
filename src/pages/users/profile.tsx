@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, {useState} from 'react';
 import HeadComponent from '@/Components/Head';
 import Sidebar from '@/Components/Sidebar';
 import Footer from '@/Components/Footer';
@@ -13,17 +13,27 @@ import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import { useEffect} from 'react';
 import Loading from '@/Components/Loading';
+import PersonalDetails from '@/Components/profile/personalDetails';
+import PersonalOrders from '@/Components/profile/PersonalOrders';
 
 
 const Profile: NextPage = (): JSX.Element => {
 
     const { status, data } = useSession() as any;
+    const [ page, setPage ] = useState('personalDetails');
 
     useEffect(() => {
         if (status === 'unauthenticated'){
             Router.replace('/users/login');
         }
     }, [status]);
+
+    let renderComponent;
+    if(page === 'personalDetails'){
+        renderComponent = <PersonalDetails />
+    } else if (page === 'orders'){
+        renderComponent = <PersonalOrders />
+    }
 
     if (status === 'authenticated'){
 
@@ -33,8 +43,18 @@ const Profile: NextPage = (): JSX.Element => {
                 <ProSidebarProvider>
                     <Sidebar />
                     <Banner />
-                    <main className={mulish.className}>
-                        <p>user logged: {data.user?.name}</p>
+                    <main className={[mulish.className, styles.profileContainer].join(" ")}>
+                        <nav className={styles.nav}>
+                            <div>
+                                <h2>Hi {data.user?.name}!</h2>
+                            </div>
+                            <ul className={styles.ul}>
+                                <li onClick={() => setPage('personalDetails')}><h2>Personal details</h2></li>
+                                <li onClick={() => setPage('orders')}><h2>My orders</h2></li>
+                                <li><h2>Logout</h2></li>
+                            </ul>
+                        </nav>
+                    {renderComponent}
                     </main>
                     <Footer />
                 </ProSidebarProvider>
