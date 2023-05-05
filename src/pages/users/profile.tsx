@@ -9,11 +9,11 @@ import Banner from '@/Components/Banner';
 import {Mulish} from 'next/font/google';
 const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 import { NextPage } from 'next';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import Router from 'next/router';
 import { useEffect} from 'react';
 import Loading from '@/Components/Loading';
-import PersonalDetails from '@/Components/profile/personalDetails';
+import PersonalDetails from '@/Components/profile/PersonalDetails';
 import PersonalOrders from '@/Components/profile/PersonalOrders';
 
 
@@ -35,6 +35,11 @@ const Profile: NextPage = (): JSX.Element => {
         renderComponent = <PersonalOrders />
     }
 
+    function logOutAndEraseCart(): void {
+        signOut();
+        localStorage.removeItem('persist:root');
+    }
+
     if (status === 'authenticated'){
 
         return (
@@ -51,7 +56,7 @@ const Profile: NextPage = (): JSX.Element => {
                             <ul className={styles.ul}>
                                 <li onClick={() => setPage('personalDetails')}><h2>Personal details</h2></li>
                                 <li onClick={() => setPage('orders')}><h2>My orders</h2></li>
-                                <li><h2>Logout</h2></li>
+                                <li onClick={() => logOutAndEraseCart()}><h2>Logout</h2></li>
                             </ul>
                         </nav>
                     {renderComponent}

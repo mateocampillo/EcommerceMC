@@ -20,6 +20,8 @@ import Image from 'next/image';
 import { Divider } from '@mui/material';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
+import { CartItem } from '../../../interfaces';
+
 
 const Cart: NextPage = (): JSX.Element => {
 
@@ -36,6 +38,20 @@ const Cart: NextPage = (): JSX.Element => {
     }, [status]);
 
     function handlePay(): void {
+        let previousOrders = localStorage.getItem(`${data.user?.userId}_orders`);
+        if(previousOrders === null){
+            localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(cartItems));
+        } else {
+            let newArr: Array<CartItem> = [];
+            cartItems.forEach((item: CartItem) => {
+                newArr.push(item)
+            })
+            JSON.parse(previousOrders).forEach((item: CartItem) => {
+                newArr.push(item)
+            })
+            localStorage.removeItem(`${data.user?.userId}_orders`);
+            localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(newArr));
+        }
         localStorage.removeItem('persist:root');
         Swal.fire({
             icon: 'success',

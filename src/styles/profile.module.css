@@ -2,7 +2,8 @@
 .profileContainer nav{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    background-color: var(--gris-claro);
 }
 
 .profileContainer nav div{
@@ -40,12 +41,32 @@
 }
 
 
-/* PERSONAL DETAILS COMPONENT */
-.personalDetailsDiv{
-
+/* PERSONAL DETAILS & ORDERS COMPONENT */
+.personalDetailsOrdersDiv{
+    padding: 10px;
+    background-color: var(--gris-claro);
+    padding-bottom: 15px;
+}
+.personalDetailsOrdersDiv h2{
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
-/* ORDERS COMPONENT */
-.ordersDiv{
+.personalDetailsOrdersDiv .infoContainer{
+    background-color: #fff;
+    padding: 10px;
+}
 
+.personalDetailsOrdersDiv .infoContainer .boxLayout{
+    margin: 15px auto;
+}
+.personalDetailsOrdersDiv .infoContainer .boxLayout p{
+    margin: 10px auto;
+}
+.personalDetailsOrdersDiv .infoContainer .boxLayout button{
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: var(--gris);
+    font-size: 1rem;
 }

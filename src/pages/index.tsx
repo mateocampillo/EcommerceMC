@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import CardComponent from '@/Components/MainCard';
 import Divider from '@mui/material/Divider';
+import Banner from '@/Components/Banner';
 
 interface apiData{
   id: number;
@@ -30,6 +31,7 @@ function Home({data}: {data:Array<apiData>}) {
       <HeadComponent title='StoreHub' />
       <ProSidebarProvider>
         <Sidebar />
+        <Banner />
         <main>
           <section>
             <Card className={styles.card}>
