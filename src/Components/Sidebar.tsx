@@ -7,17 +7,17 @@ import Switch from '@mui/material/Switch';
 import LogoComponent from './Logo';
 import {BsGithub, BsLinkedin} from 'react-icons/bs';
 import {FaUserCircle} from 'react-icons/fa';
-import {BiLogOutCircle} from 'react-icons/bi';
 import {AiOutlineHome, AiOutlineGithub, AiFillLinkedin, AiOutlineUser,AiOutlineShoppingCart} from 'react-icons/ai';
 import Link from 'next/link';
 import { Divider } from '@mui/material';
 import ModalComments from './ModalComments'
 import { Poppins } from 'next/font/google';
 import { signIn } from 'next-auth/react';
-import { useSession, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useAppSelector } from '../../store/store';
 import { totalCartItemSelector } from '../../store/features/cartSlice';
+import ModalLogout from '@/Components/auth/ModalLogout';
 
 const label = { inputProps: { 'aria-label': 'Sidebar switch' } };
 const poppins = Poppins({weight: ['300'], style: ['normal'], subsets: ['latin']})
@@ -48,11 +48,6 @@ export default function SidebarComponent() {
         setTimeout(retrasarSidebarDisplay, 300);
     }, [])
 
-    function logOutAndEraseCart(): void {
-        signOut();
-        localStorage.removeItem('persist:root');
-    }
-
     let userButtons;
     if ( status === 'unauthenticated' ) {
         userButtons = <MenuItem onClick={() => {
@@ -68,7 +63,7 @@ export default function SidebarComponent() {
                         <p className={styles.sidebarCartNumber}>{totalItems}</p>
                     )
                 }</MenuItem>
-                <MenuItem onClick={() => logOutAndEraseCart()}><BiLogOutCircle className={styles.sidebarIcons}/>Logout</MenuItem>
+                <ModalLogout/>
             </SubMenu>
                 
     }

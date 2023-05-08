@@ -37,3 +37,23 @@
 .inputContainer{
     margin: 10px auto;
 }
+
+.logoutButtonContainer{
+    display: flex;
+    width: 80%;
+    height: 10vh;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    margin: 0px auto;
+}
+.logoutButtonContainer button{
+    font-size: 1.2rem;
+    padding: 10px;
+    border: 1px solid var(--gris-claro);
+    border-radius: 10px;
+}
+.logoutButtonContainer button:nth-child(1){
+    background-color: rgb(255, 83, 83);
+    color: #fff;
+}
