@@ -21,6 +21,7 @@ import { Divider } from '@mui/material';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { CartItem } from '../../../interfaces';
+import dayjs from 'dayjs';
 
 
 const Cart: NextPage = (): JSX.Element => {
@@ -40,11 +41,17 @@ const Cart: NextPage = (): JSX.Element => {
     function handlePay(): void {
         let previousOrders = localStorage.getItem(`${data.user?.userId}_orders`);
         if(previousOrders === null){
+            cartItems.forEach((item, index) => {
+                const date = dayjs().format('DD/MM/YY HH:mm');
+                cartItems[index] = {...item, datePurchased: date};
+            })
             localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(cartItems));
         } else {
             let newArr: Array<CartItem> = [];
-            cartItems.forEach((item: CartItem) => {
-                newArr.push(item)
+            cartItems.forEach((item: CartItem, index) => {
+                const date = dayjs().format('DD/MM/YY HH:mm');
+                cartItems[index] = {...item, datePurchased: date};
+                newArr.push(cartItems[index]);
             })
             JSON.parse(previousOrders).forEach((item: CartItem) => {
                 newArr.push(item)

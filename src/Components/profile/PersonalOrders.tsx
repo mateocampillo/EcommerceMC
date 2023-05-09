@@ -5,6 +5,7 @@ const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { CartItem } from '../../../interfaces';
 
 const PersonalOrders: NextPage = (): JSX.Element => {
 
@@ -16,13 +17,14 @@ const PersonalOrders: NextPage = (): JSX.Element => {
             <div className={[mulish.className, styles.personalDetailsOrdersDiv].join(" ")}>
                 <h2>Completed Orders</h2>
                 <div className={styles.infoContainer}>
-                    {orders.map((item: { product: { id: number; title: string; category: string; price: number; }; qty: number; date: string | number; }) => {
+                    {orders.map((item: CartItem) => {
                         return (
                         <div className={styles.boxLayout} key={item.product.id}>
                             <h3>Item: {item.product.title}</h3>
                             <p>Quantity: {item.qty}</p>
                             <p>Item category: {item.product.category}</p>
                             <p>Price paid: <strong>$ {item.product.price * item.qty}</strong></p>
+                            <p>Purchased: {item.datePurchased}</p>
                         </div>
                         )
                     })}
