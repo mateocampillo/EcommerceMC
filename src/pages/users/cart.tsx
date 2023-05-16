@@ -38,34 +38,46 @@ const Cart: NextPage = (): JSX.Element => {
         }
     }, [status]);
 
-    function handlePay(): void {
-        let previousOrders = localStorage.getItem(`${data.user?.userId}_orders`);
-        if(previousOrders === null){
-            cartItems.forEach((item, index) => {
-                const date = dayjs().format('DD/MM/YY HH:mm');
-                cartItems[index] = {...item, datePurchased: date};
+    function handlePay() {
+        let cardValue = (document.getElementById("cardValue") as HTMLInputElement ).value;
+        let nameValue = (document.getElementById("nameValue") as HTMLInputElement ).value;
+        let dateValue = (document.getElementById("dateValue") as HTMLInputElement ).value;
+        let ccvValue = (document.getElementById("ccvValue") as HTMLInputElement ).value;
+        if( cardValue.length != 16 || nameValue.length < 3 || dateValue.length != 4 || ccvValue.length < 3){
+            Swal.fire({
+                icon: 'error',
+                title: 'Wrong Information',
+                text: 'Please check if your card details are correct.'
             })
-            localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(cartItems));
         } else {
-            let newArr: Array<CartItem> = [];
-            cartItems.forEach((item: CartItem, index) => {
-                const date = dayjs().format('DD/MM/YY HH:mm');
-                cartItems[index] = {...item, datePurchased: date};
-                newArr.push(cartItems[index]);
+            let previousOrders = localStorage.getItem(`${data.user?.userId}_orders`);
+            if(previousOrders === null){
+                cartItems.forEach((item, index) => {
+                    const date = dayjs().format('DD/MM/YY HH:mm');
+                    cartItems[index] = {...item, datePurchased: date};
+                })
+                localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(cartItems));
+            } else {
+                let newArr: Array<CartItem> = [];
+                cartItems.forEach((item: CartItem, index) => {
+                    const date = dayjs().format('DD/MM/YY HH:mm');
+                    cartItems[index] = {...item, datePurchased: date};
+                    newArr.push(cartItems[index]);
+                })
+                JSON.parse(previousOrders).forEach((item: CartItem) => {
+                    newArr.push(item)
+                })
+                localStorage.removeItem(`${data.user?.userId}_orders`);
+                localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(newArr));
+            }
+            localStorage.removeItem('persist:root');
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Item Purchased.'
             })
-            JSON.parse(previousOrders).forEach((item: CartItem) => {
-                newArr.push(item)
-            })
-            localStorage.removeItem(`${data.user?.userId}_orders`);
-            localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(newArr));
+            Router.replace('/');
         }
-        localStorage.removeItem('persist:root');
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: 'Item Purchased.'
-        })
-        Router.replace('/');
     }
 
     if (status === 'authenticated'){
@@ -142,24 +154,26 @@ const Cart: NextPage = (): JSX.Element => {
                                 </div>
                             </div>
                             <div>
-                                <div className={styles.cardInputContainer}>
-                                    <label htmlFor="">Card Number</label>
-                                    <input type="number" required minLength={16} placeholder='0000-0000-0000-0000'/>
-                                </div>
-                                <div className={styles.cardInputContainer}>
-                                    <label htmlFor="">Card Holder Name</label>
-                                    <input type="text" required placeholder='John Doe'/>
-                                </div>
-                                <div className={styles.expireCCV}>
+                                <form id='cardForm'>
                                     <div className={styles.cardInputContainer}>
-                                        <label htmlFor="">Expire Date</label>
-                                        <input type="text" required placeholder='01/12'/>
+                                        <label htmlFor="">Card Number</label>
+                                        <input type="number" required minLength={16} maxLength={16} placeholder='0000-0000-0000-0000' id='cardValue'/>
                                     </div>
                                     <div className={styles.cardInputContainer}>
-                                        <label htmlFor="">CCV</label>
-                                        <input type="number" required placeholder='123'/>
+                                        <label htmlFor="">Card Holder Name</label>
+                                        <input type="text" placeholder='John Doe' minLength={3} id='nameValue'/>
                                     </div>
-                                </div>
+                                    <div className={styles.expireCCV}>
+                                        <div className={styles.cardInputContainer}>
+                                            <label htmlFor="">Expire Date</label>
+                                            <input type="text" placeholder='01/12' id='dateValue'/>
+                                        </div>
+                                        <div className={styles.cardInputContainer}>
+                                            <label htmlFor="">CCV</label>
+                                            <input type="number" placeholder='123' id='ccvValue'/>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             <div className={styles.pricesContainer}>
                                 <div className={styles.div}>
