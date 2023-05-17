@@ -166,7 +166,7 @@ const Cart: NextPage = (): JSX.Element => {
                                     <div className={styles.expireCCV}>
                                         <div className={styles.cardInputContainer}>
                                             <label htmlFor="">Expire Date</label>
-                                            <input type="text" placeholder='01/12' id='dateValue'/>
+                                            <input type="number" placeholder='01/12' id='dateValue'/>
                                         </div>
                                         <div className={styles.cardInputContainer}>
                                             <label htmlFor="">CCV</label>
