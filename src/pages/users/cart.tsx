@@ -91,12 +91,12 @@ const Cart: NextPage = (): JSX.Element => {
                     <Banner />
                     <main className={mulish.className}>
                         <div className={styles.emptyCartContainer}>
-                            <h1>No items in your cart!</h1>
-                            <div>
+                        <div>
                                 <Image alt='error' src={'https://blogs.unsw.edu.au/nowideas/files/2018/11/error-no-es-fracaso.jpg'} fill/>
                             </div>
+                            <h1>No items in your cart!</h1>
                             <p>It looks like you haven&#39;t added any products to your cart, why don&#39;t you go ahead and look at our top categories!</p>
-                            <Link href='/products?query=all'>Products</Link>
+                            <Link href='/products?query=all'>Browse products</Link>
                         </div>
                     </main>
                     <Footer />

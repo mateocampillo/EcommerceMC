@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Divider from '@mui/material/Divider';
 import RatingStars from '@/Components/RatingStars';
+import { Source_Sans_Pro } from 'next/font/google'
 
 interface ratingObject{
   rate: number;
@@ -17,6 +18,8 @@ interface propList{
   price: number;
 }
 
+const ssp = Source_Sans_Pro({weight: ['400'], style: ['normal'], subsets: ['latin']})
+
 export default function CardComponent(props:propList) {
 
   return (
@@ -26,7 +29,7 @@ export default function CardComponent(props:propList) {
       <div className={styles.containerTitle}>
         <Link href={`/products/${props.id}`}><h4>{props.title}</h4></Link>
         <RatingStars rating={props.rating.rate} count={props.rating.count}/>
-        <div className={styles.containerDetails}>
+        <div className={[styles.containerDetails, ssp.className].join(" ")}>
           <Link href={`/products/${props.id}`}>Details</Link>
           <p>&#36;{props.price}</p>
         </div>

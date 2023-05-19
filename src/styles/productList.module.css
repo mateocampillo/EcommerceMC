@@ -1,7 +1,31 @@
-.heading{
-    text-align: center;
-    margin: 20px auto 10px;
-    font-size: 2.5rem;
+.bannerImageContainer{
+    height: 35vh;
+    position: relative;
+    margin-bottom: 30px;
+}
+.bannerImage{
+    width: 100%;
+    height: 100%;
+    object-fit: center;
+}
+.bannerTextContainer{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+.bannerTextContainer h1{
+    background-color: var(--gris-claro);
+    width: fit-content;
+    padding: 3px;
+    font-size: 1.7rem;
+}
+.bannerTextContainer h2{
+    background-color: var(--gris);
+    color: #fff;
+    width: fit-content;
+    padding: 3px;
+    font-size: 1.3rem;
+    margin-top: 4px;
 }
 
 .category{

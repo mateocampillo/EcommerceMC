@@ -11,7 +11,8 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import CardsId from '@/Components/CardsId';
 import {useRouter} from 'next/router';
-import { PT_Sans } from 'next/font/google';
+import { Source_Sans_Pro } from 'next/font/google'
+import Image from 'next/image';
 
 interface ratingObject{
   rate: number;
@@ -27,13 +28,15 @@ interface apiData{
   rating: ratingObject;
 }
 
-const pt_sans = PT_Sans({weight: ['700'], style: ['italic'], subsets: ['latin']})
+const ssp = Source_Sans_Pro({weight: ['400'], style: ['normal'], subsets: ['latin']})
 
 function ProductList({data}: {data:Array<apiData>}) {
 
   const router = useRouter();
   let queryCategory = router.query.query as string;
   const [category, setCategory] = React.useState('');
+  const [bannerImg, setBannerImg] = React.useState('/img/bcg-home.jpg');
+  const [h1Title, setH1Title] = React.useState('All the products');
 
   React.useEffect((): void => {
     setCategory(queryCategory);
@@ -49,6 +52,31 @@ function ProductList({data}: {data:Array<apiData>}) {
     )
   };
 
+  React.useEffect((): void => {
+    switch (category) {
+      case "men's clothing":
+        setBannerImg('/img/banner_men_products.jpg')
+        setH1Title("Men's section")
+        break;
+      case "women's clothing":
+        setBannerImg('/img/banner_women_products.jpg')
+        setH1Title("Women's section")
+        break;
+      case "electronics":
+        setBannerImg('/img/banner_electronics.jpg')
+        setH1Title("Electronics section")
+        break;
+      case "jewelery":
+        setBannerImg('/img/banner_jewelery.jpg')
+        setH1Title("Jewelery section")
+        break;
+      default:
+        setBannerImg('/img/banner_all.jpg')
+        setH1Title("All the products")
+        break;
+    }
+  }, [category])
+
   return (
     <>
       <HeadComponent title='Product List' />
@@ -57,7 +85,13 @@ function ProductList({data}: {data:Array<apiData>}) {
         <main>
           <section>
             <div>
-              <h2 className={[styles.heading, pt_sans.className].join(" ")}>The best products</h2>
+              <div className={styles.bannerImageContainer}>
+                <Image className={styles.bannerImage} src={`${bannerImg}`} width={'2000'} height={'2000'} alt='banner to introduce product list' />
+                <div className={[styles.bannerTextContainer, ssp.className].join(" ")}>
+                  <h1>{h1Title}</h1>
+                  <h2>Curated for Excellence.</h2>
+                </div>
+              </div>
               <FormControl className={styles.category}>
                 <InputLabel id="select-label">Category</InputLabel>
                 <Select labelId="select-category" id="select-category" value={category} onChange={handleChange} autoWidth label="Category">
