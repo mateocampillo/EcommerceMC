@@ -1,6 +1,8 @@
 import React, {useState, useRef, FormEventHandler} from 'react';
 import styles from '@/styles/formRegister.module.css';
 import Link from 'next/link';
+import Swal from 'sweetalert2';
+import Router from 'next/router';
 
 function FormRegister() {
 
@@ -39,6 +41,12 @@ function FormRegister() {
                 })
                 .then(res => res.json())
                 .then(json => console.log(json))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Remember this is a only a frontend project, no real user is created!'
+                })
+                Router.replace('/users/login');
             } else {
                 alert('passwords are different');
                 document.getElementById('cr_pass')?.focus();
@@ -47,8 +55,6 @@ function FormRegister() {
             alert('error en TOS')
         }
     }
-
-        //FIX REGISTER FETCH
 
     return (
         <form ref={form} onSubmit={handleForm}>

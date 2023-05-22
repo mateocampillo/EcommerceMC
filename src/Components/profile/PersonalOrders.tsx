@@ -25,6 +25,7 @@ const PersonalOrders: NextPage = (): JSX.Element => {
                             <p>Item category: {item.product.category}</p>
                             <p>Price paid: <strong>$ {item.product.price * item.qty}</strong></p>
                             <p>Purchased: {item.datePurchased}</p>
+                            <p>Arrival date: {item.shipDate}</p>
                         </div>
                         )
                     })}

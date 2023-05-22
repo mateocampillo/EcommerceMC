@@ -11,7 +11,7 @@ const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
-import { useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import Loading from '@/Components/Loading';
 import { useAppSelector } from '../../../store/store';
 import { totalPriceSelector } from '../../../store/features/cartSlice';
@@ -32,18 +32,46 @@ const Cart: NextPage = (): JSX.Element => {
     const totalPrice = useAppSelector(totalPriceSelector);
     const taxPrice = (totalPrice*10) / 100;
 
+
     useEffect(() => {
         if (status === 'unauthenticated'){
             Router.replace('/users/login');
         }
-    }, [status]);
+        if (status === 'authenticated'){
+            let name = document.getElementById('inputFullName') as HTMLInputElement;
+            name.defaultValue = data.user.name;
+            let email = document.getElementById('inputEmail') as HTMLInputElement;
+            email.defaultValue = data.user.email;
+            let streetName = document.getElementById('inputStreetName') as HTMLInputElement;
+            streetName.defaultValue = data.user.address.street_name;
+            let streetAddress = document.getElementById('inputStreetAddress') as HTMLInputElement;
+            streetAddress.defaultValue = data.user.address.street_address;
+            let city = document.getElementById('inputCity') as HTMLInputElement;
+            city.defaultValue = data.user.address.city;
+        }
+    }, [status, data]);
+
+    function formatCreditCard() {
+        let ccNumber = document.getElementById('cardValue') as HTMLInputElement;
+        var index = ccNumber.value.lastIndexOf('-');
+        var test = ccNumber.value.substring(index + 1);
+        if (test.length === 4 && ccNumber.value.length < 16){
+            ccNumber.value = ccNumber.value + '-';
+        }
+        let ccDate = document.getElementById('dateValue') as HTMLInputElement;
+        var index = ccDate.value.lastIndexOf('/');
+        var test = ccDate.value.substring(index + 1);
+        if (test.length === 2 && ccDate.value.length < 4){
+            ccDate.value = ccDate.value + '/';
+        }
+    }
 
     function handlePay() {
         let cardValue = (document.getElementById("cardValue") as HTMLInputElement ).value;
         let nameValue = (document.getElementById("nameValue") as HTMLInputElement ).value;
         let dateValue = (document.getElementById("dateValue") as HTMLInputElement ).value;
         let ccvValue = (document.getElementById("ccvValue") as HTMLInputElement ).value;
-        if( cardValue.length != 16 || nameValue.length < 3 || dateValue.length != 4 || ccvValue.length < 3){
+        if( cardValue.length != 19 || nameValue.length < 3 || dateValue.length != 5 || ccvValue.length < 3){
             Swal.fire({
                 icon: 'error',
                 title: 'Wrong Information',
@@ -54,14 +82,16 @@ const Cart: NextPage = (): JSX.Element => {
             if(previousOrders === null){
                 cartItems.forEach((item, index) => {
                     const date = dayjs().format('DD/MM/YY HH:mm');
-                    cartItems[index] = {...item, datePurchased: date};
+                    const shipDay = dayjs().add(7, 'day').format('DD/MM/YY');
+                    cartItems[index] = {...item, datePurchased: date, shipDate: shipDay};
                 })
                 localStorage.setItem(`${data.user?.userId}_orders`, JSON.stringify(cartItems));
             } else {
                 let newArr: Array<CartItem> = [];
                 cartItems.forEach((item: CartItem, index) => {
                     const date = dayjs().format('DD/MM/YY HH:mm');
-                    cartItems[index] = {...item, datePurchased: date};
+                    const shipDay = dayjs().add(7, 'day').format('DD/MM/YY');
+                    cartItems[index] = {...item, datePurchased: date, shipDate: shipDay};
                     newArr.push(cartItems[index]);
                 })
                 JSON.parse(previousOrders).forEach((item: CartItem) => {
@@ -74,7 +104,7 @@ const Cart: NextPage = (): JSX.Element => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
-                text: 'Item Purchased.'
+                text: 'An email will be sent with all your order information!'
             })
             Router.replace('/');
         }
@@ -125,23 +155,23 @@ const Cart: NextPage = (): JSX.Element => {
                             <h2>Delivery Information</h2>
                             <div className={styles.inputContainer}>
                                 <p>Full name:</p>
-                                <input type="text" value={data.user?.name} required/>
+                                <input type="text" id='inputFullName' required/>
                             </div>
                             <div className={styles.inputContainer}>
                                 <p>Contact Email:</p>
-                                <input type="email" value={data.user?.email} required/>
+                                <input type="email" id='inputEmail' required/>
                             </div>
                             <div className={styles.inputContainer}>
                                 <p>Street Name:</p>
-                                <input type="text" value={data.user?.address.street_name} required/>
+                                <input type="text" id='inputStreetName' required/>
                             </div>
                             <div className={styles.inputContainer}>
                                 <p>Street Address:</p>
-                                <input type="text" value={data.user?.address.street_address} required/>
+                                <input type="text" id='inputStreetAddress' required/>
                             </div>
                             <div className={styles.inputContainer}>
                                 <p>City:</p>
-                                <input type="text" value={data.user?.address.city} required/>
+                                <input type="text" id='inputCity' required/>
                             </div>
                         </section>
                         <section className={[styles.section, styles.orderSummary].join(" ")}>
@@ -157,7 +187,7 @@ const Cart: NextPage = (): JSX.Element => {
                                 <form id='cardForm'>
                                     <div className={styles.cardInputContainer}>
                                         <label htmlFor="">Card Number</label>
-                                        <input type="number" required minLength={16} maxLength={16} placeholder='0000-0000-0000-0000' id='cardValue'/>
+                                        <input type="text" onKeyUp={formatCreditCard} required minLength={19} maxLength={19} placeholder='1234-1234-1234-1234' id='cardValue'/>
                                     </div>
                                     <div className={styles.cardInputContainer}>
                                         <label htmlFor="">Card Holder Name</label>
@@ -166,7 +196,7 @@ const Cart: NextPage = (): JSX.Element => {
                                     <div className={styles.expireCCV}>
                                         <div className={styles.cardInputContainer}>
                                             <label htmlFor="">Expire Date</label>
-                                            <input type="number" placeholder='01/12' id='dateValue'/>
+                                            <input type="text" onKeyUp={formatCreditCard} placeholder='01/01' id='dateValue' minLength={4} maxLength={5}/>
                                         </div>
                                         <div className={styles.cardInputContainer}>
                                             <label htmlFor="">CCV</label>

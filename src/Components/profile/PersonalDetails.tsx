@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from '@/styles/profile.module.css';
 import {Mulish} from 'next/font/google';
-const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import { Divider } from '@mui/material';
+import UpdateShipping from '@/Components/profile/UpdateShipping';
+import UpdateInformation from '@/Components/profile/UpdateInformation';
 
+const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 
 const PersonalDetails: NextPage = (): JSX.Element => {
 
@@ -20,7 +22,7 @@ const PersonalDetails: NextPage = (): JSX.Element => {
                     <p>City: {data.user?.address.city}</p>
                     <p>Street name: {data.user?.address.street_name}</p>
                     <p>Street address: {data.user?.address.street_address}</p>
-                    <h4>&#62; <button>Update shipping address</button></h4>
+                    <UpdateShipping />
                 </div>
                 <Divider variant='middle'/>
                 <div className={styles.boxLayout}>
@@ -28,7 +30,7 @@ const PersonalDetails: NextPage = (): JSX.Element => {
                     <p>Name: {data.user?.name}</p>
                     <p>Email: {data.user?.email}</p>
                     <p>Birthdate: {data.user?.birthday}</p>
-                    <h4>&#62; <button>Update personal details</button></h4>
+                    <UpdateInformation />
                 </div>
             </div>
         </div>
