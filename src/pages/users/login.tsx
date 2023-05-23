@@ -28,7 +28,7 @@ function Register() {
             <section className={styles.sectionContainer}>
                 <div className={styles.iconContainer}>
                     <h3 className={roboto_c.className}>Log in with email.</h3>
-                    <Popper boxContent={'username: userLogin ; pass: 1234'}/>
+                    <Popper title={'To login:'} firstInput={'- username: userLogin'} secondInput={'- password: 1234'}/>
                 </div>
                 <div className={styles.formContainer}>
                     <SignIn />

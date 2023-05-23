@@ -1,0 +1,15 @@
+.popperContainer{
+    border: 1px solid var(--gris);
+    padding: 8px;
+    background-color: #fff;
+    width: 80%;
+}
+
+.popperContainer h3{
+    font-size: 1.3rem;
+}
+
+.popperContainer p{
+    font-size: 1.3rem;
+    margin: 5px auto;
+}

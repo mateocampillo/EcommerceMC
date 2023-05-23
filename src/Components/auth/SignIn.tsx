@@ -36,7 +36,7 @@ const SignIn: NextPage = (props): JSX.Element => {
                 />
             </div>
             <div className={styles.containerForgot}>
-                <p><Link href={'/users/login'}>Forgot your password?</Link></p>
+                <p><Link href={'/users/recover'}>Forgot your password?</Link></p>
             </div>
             <div className={styles.containerBoton}>
                 <input type="submit" value="Login"/>
