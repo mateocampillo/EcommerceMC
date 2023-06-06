@@ -80,14 +80,16 @@ export default function ProductDetail(props:propList) {
                 {key: 'item', text: `${props.title}`, href: `/products/${props.id}`},
             ]}/>
         </nav>
-        <section className={mulish.className}>
-          <div className={styles.h1Container}>
-            <h1>{props.title}</h1>
-          </div>
-          <div className={styles.imgContainer}>
-            <Image alt='imagen de producto' src={props.image} fill objectFit='contain'/>
+        <section className={[styles.sectionContainer, mulish.className].join(" ")}>
+          <div>
+            <div className={styles.imgContainer}>
+              <Image alt='imagen de producto' src={props.image} fill objectFit='contain'/>
+            </div>
           </div>
           <div className={styles.infoContainer}>
+            <div className={styles.h1Container}>
+              <h1>{props.title}</h1>
+            </div>
             <p className={styles.description}>{props.description}</p>
             <div className={styles.divRatingStars}>
               <RatingStars rating={props.rating.rate} count={props.rating.count}/>

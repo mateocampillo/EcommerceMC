@@ -86,7 +86,7 @@ function ProductList({data}: {data:Array<apiData>}) {
           <section>
             <div>
               <div className={styles.bannerImageContainer}>
-                <Image className={styles.bannerImage} src={`${bannerImg}`} width={'2000'} height={'2000'} alt='banner to introduce product list' />
+                <Image className={styles.bannerImage} src={`${bannerImg}`} width={'1920'} height={'1080'} alt='banner to introduce product list' />
                 <div className={[styles.bannerTextContainer, ssp.className].join(" ")}>
                   <h1>{h1Title}</h1>
                   <h2>Curated for Excellence.</h2>
@@ -103,7 +103,7 @@ function ProductList({data}: {data:Array<apiData>}) {
                 </Select>
               </FormControl>
             </div>
-            <div>
+            <div className={styles.productListContainer}>
               {data.map((product) => {
                 if(category === product.category){
                   return (

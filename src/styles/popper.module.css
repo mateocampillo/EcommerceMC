@@ -13,3 +13,9 @@
     font-size: 1.3rem;
     margin: 5px auto;
 }
+
+@media (min-width: 500px){
+    .popperContainer{
+        transform: translate3d(55px, 250px, 0px) !important;
+    }
+}

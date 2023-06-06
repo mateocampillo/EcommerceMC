@@ -17,3 +17,18 @@
     color: #000;
     margin-bottom: 10px;
 }
+
+.liCartImage{
+    display: block;
+    width: fit-content;
+    max-width: 150px;
+    max-height: 150px;
+    position: relative;
+    margin: 0 auto;
+}
+@media (min-width: 768px){
+    .liCartImage{
+        max-width: 200px;
+        max-height: 200px;
+    }
+}

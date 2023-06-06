@@ -40,3 +40,10 @@
     border: 1px solid var(--gris);
     border-radius: 30px;
 }
+
+@media (min-width: 768px){
+    .formContainer{
+        width: 60vw;
+        margin: 0px auto;
+    }
+}

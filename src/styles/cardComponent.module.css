@@ -18,7 +18,7 @@
 .containerTitle{
     width: 90%;
     height: fit-content;
-    overflow: scroll;
+    overflow: auto;
 }
 .containerTitle a{
     text-decoration: none;
@@ -33,4 +33,16 @@
 
 .cardImage{
     width: 100%;
+}
+
+@media (min-width: 500px){
+    .container{
+        width: 45vw;
+        max-width: none
+    }
+}
+@media (min-width: 1366px){
+    .container{
+        width: 22vw;
+    }
 }

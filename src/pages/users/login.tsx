@@ -13,7 +13,7 @@ import Popper from '@/Components/Popper';
 const mulish = Mulish({weight: ['300'], style: ['normal'], subsets: ['latin']})
 const roboto_c = Roboto_Condensed({weight: ['400'], style: ['normal'], subsets: ['latin']})
 
-function Register() {
+function Login() {
 
   return (
     <>
@@ -45,4 +45,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Login

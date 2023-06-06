@@ -37,7 +37,7 @@ const ForgotPasswordForm: NextPage = (): JSX.Element => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
             <div className={styles.container}>
                 <label htmlFor="email">Email</label>
                 <input type="email" name='email' id='email' required

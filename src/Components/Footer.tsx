@@ -13,7 +13,7 @@ export default function FooterComponent() {
             <section className={styles.logoContainer}>
                 <LogoComponent color='#fff'/>
             </section>
-            <section>
+            <section className={styles.sectionsContainer}>
                 <div className={styles.infoContainer}>
                     <h3>Contact Info</h3>
                     <nav>

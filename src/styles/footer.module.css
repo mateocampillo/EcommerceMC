@@ -39,3 +39,16 @@
 .infoContainer nav button{
     color: #fff !important;
 }
+
+@media (min-width: 500px){
+    .sectionsContainer{
+        display: flex;
+        justify-content: space-around;
+    }
+    .infoContainer {
+        width: 45vw;
+    }
+    .infoContainer nav a{
+        margin: 15px auto;
+    }
+}

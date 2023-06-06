@@ -18,7 +18,7 @@
 .containerTitle{
     width: 90%;
     height: fit-content;
-    overflow: scroll;
+    overflow: auto;
 }
 .containerTitle a{
     text-decoration: none;
@@ -55,4 +55,10 @@
     color: #000;
     font-size: 1.3rem;
     font-weight: 600;
+}
+
+@media (min-width: 500px){
+    .container{
+        width: 45vw !important;
+    }
 }

@@ -37,10 +37,6 @@ export default function SidebarComponent() {
         body.classList.contains('stop-scroll') === true ? body.classList.remove('stop-scroll') : body.classList.add('stop-scroll');
     }
 
-    function handleUser(): void {
-        console.log('handleUser');
-    }
-
     useEffect(():void => {
         function retrasarSidebarDisplay() {
             document.getElementById('menuSidebar')!.style.display = 'block'
@@ -49,10 +45,12 @@ export default function SidebarComponent() {
     }, [])
 
     let userButtons;
+    let userLoginProfile;
     if ( status === 'unauthenticated' ) {
         userButtons = <MenuItem onClick={() => {
                         signIn();
-                    }}><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>
+                    }}><AiOutlineUser className={styles.sidebarIcons}/>Login</MenuItem>;
+        userLoginProfile = <Link href={'/users/login'}><FaUserCircle className={styles.icon}/></Link>
     } else if ( status === 'authenticated') {
         let img = data.user?.image as string;
         userButtons = 
@@ -64,12 +62,12 @@ export default function SidebarComponent() {
                     )
                 }</MenuItem>
                 <ModalLogout/>
-            </SubMenu>
-                
+            </SubMenu>;
+        userLoginProfile = <Link href={'/users/profile'}><FaUserCircle className={styles.icon}/></Link>
     }
 
     return (
-        <header>
+        <header className={styles.header}>
             {/* Menu SIDEBAR */}
             <Sidebar id='menuSidebar' className={[styles.container, poppins.className].join(" ")} collapsedWidth='0' width={'100vw'} transitionDuration={400} defaultCollapsed={true}>
                 <Menu className={styles.menu}>
@@ -105,7 +103,7 @@ export default function SidebarComponent() {
                 <LogoComponent color='#000' />
                 <Link href='https://github.com/mateocampillo' target='_blank'><BsGithub className={styles.icon}/></Link>
                 <Link href='https://www.linkedin.com/in/mateocampillo/' target='_blank'><BsLinkedin className={styles.icon}/></Link>
-                <FaUserCircle className={styles.icon} onClick={handleUser}/>
+                {userLoginProfile}
             </div>
         </header>
     )

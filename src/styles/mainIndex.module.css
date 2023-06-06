@@ -53,11 +53,11 @@
 .bannerInfoContainer .bannerText a{
     font-size: 1.4rem;
     display: block;
-    width: 60%;
+    width: fit-content;
     color: #fff;
     text-decoration: none;
     background-color: var(--gris);
-    padding: 6px;
+    padding: 6px 20px;
     margin: 10px auto 0px;
     border: none;
     border-radius: 10px;
@@ -65,9 +65,20 @@
 
 /* END BANNER SECTION */
 /* CARD SECTION */
+.h2SecondCar{
+    display: none;
+}
+.secondCard{
+    display: none;
+    margin-top: 20px;
+    border-radius: 0;
+    box-shadow: none !important;
+}
+.secondCard div:nth-child(1){
+    background-size: contain;
+}
 .card{
     margin-top: 20px;
-    max-width: 500px;
     border-radius: 0;
     box-shadow: none !important;
 }
@@ -83,12 +94,6 @@
 .cardContent h2{
     color: var(--verde);
 }
-/* .cardContent p{
-    height: 12vh;
-    overflow: scroll;
-    border: 4px solid var(--verde);
-    padding: 5px 3px;
-} */
 .infoContainer{
     margin-bottom: 30px;
 }
@@ -128,3 +133,98 @@
 }
 
 /* END CATEGORIES SECTION */
+
+@media (min-width: 500px){
+    /* BANNER SECTION */
+
+    .bannerImageContainer{
+        height: 40vh;
+    }
+
+    /* END BANNER SECTION */
+    /* CARD SECTION */
+
+    .newReleasesContainer{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .card{
+        max-width: 2000px;
+        width: 45%;
+        margin: 10px auto 0px;
+    }
+
+    .h2SecondCar{
+        display: block;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 20px auto;
+    }
+    .secondCard{
+        display: block !important;
+        position: relative;
+        max-width: 2000px;
+        width: 45%;
+        margin: 10px auto 0px;
+    }
+    .secondCard div:nth-child(1){
+        background-size: cover;
+    }
+    .secondCard .cardMedia{
+        width: 100%;
+        height: 90%;
+    }
+    .secondCard .cardContent{
+        position: absolute;
+        bottom: 50px;
+        left: 10px;
+        background-color: rgba(255,255,255,0.7);
+        padding: 5px;
+        width: 90%;
+        margin: 0 auto;
+        text-decoration: none;
+        color: #000;
+    }
+
+    /* END CARD SECTION */
+
+    /* CATEGORIES SECTION */
+
+    .sectionCategories .listContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    /* END CATEGORIES SECTION */
+
+}
+
+@media (min-width: 768px){
+    /* CATEGORIES SECTION */
+
+    .sectionCategories .listContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    /* END CATEGORIES SECTION */
+}
+
+@media (min-width: 1366px){
+    .bannerImageContainer{
+        height: 55vh;
+    }
+    .bannerInfoContainer{
+        height: 35vh;
+    }
+    .bannerInfoContainer .bannerLogo h2{
+        font-size: 2rem;
+    }
+    .bannerInfoContainer .bannerText p{
+        font-size: 1.2rem;
+    }
+}

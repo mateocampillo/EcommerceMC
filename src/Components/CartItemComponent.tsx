@@ -14,7 +14,7 @@ export default function CartItemComponent({cartItem}: Props) {
 
   return (
     <li className={styles.li}>
-      <Link href={`/products/${cartItem.product.id}`}><Image alt='product img' src={cartItem.product.image} width={100} height={100}/></Link>
+      <Link href={`/products/${cartItem.product.id}`}><Image className={styles.liCartImage} alt='product img' src={cartItem.product.image} width={1000} height={1000}/></Link>
       <div className={styles.titleQty}>
         <Link href={`/products/${cartItem.product.id}`}><p>{cartItem.product.title}</p></Link>
         <p><strong>Quantity: {cartItem.qty}</strong></p>

@@ -20,7 +20,7 @@ const SignIn: NextPage = (props): JSX.Element => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
             <div className={styles.container}>
                 <label htmlFor="username">Username</label>
                 <input type="text" name='username' id='username' required

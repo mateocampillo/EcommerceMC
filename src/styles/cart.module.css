@@ -146,3 +146,28 @@
     margin: 0px auto;
     border-radius: 10px;
 }
+
+@media (min-width: 768px){
+    .cart{
+        width: 80%;
+        margin: 15px auto;
+    }
+    .userInformation .inputContainer{
+        width: 70%;
+    }
+    .orderSummary .cardsImagesContainer .cardsImages{
+        width: 30%;
+    }
+    .orderSummary .expireCCV{
+        width: 50%;
+        margin: 0px auto;
+    }
+}
+@media (min-width: 1366px){
+    .cart{
+        width: 75%;
+    }
+    .cart .priceTotal{
+        font-size: 1.3rem;
+    }
+}

@@ -57,7 +57,7 @@ function FormRegister() {
     }
 
     return (
-        <form ref={form} onSubmit={handleForm}>
+        <form ref={form} onSubmit={handleForm} className={styles.formContainer}>
             <div className={styles.container}>
                 <label htmlFor="first_name">First name</label>
                 <input type="text" name="first_name" id="first_name" required onChange={(e) => setFullNameValue(e.target.value)} minLength={3} maxLength={30}/>

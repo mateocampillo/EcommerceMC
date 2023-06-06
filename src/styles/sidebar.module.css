@@ -86,16 +86,19 @@
         background-color: transparent;
         border: none;
     }
-    .menu{
-        width: 40vw;
+    .header aside{
         background-color: var(--verde);
+    }
+    .menu{
+        background-color: #fff;
+        padding: 15px;
     }
     .menu:nth-child(1){
         margin: 0;
     }
     .headerContainer{
         grid-template-columns: 10% 45% 15% 15% 15%;
-        height: 5vh;
+        height: 6vh;
     }
     .icon{
         place-self: center;
@@ -108,27 +111,7 @@
     }
 
     .sidebarLogoContainer{
-        display: none;
-    }
-}
-
-@media (min-width: 768px){
-    .menu{
-        width: 30vw;
-    }
-}
-@media (min-width: 992px){
-    .menu{
-        width: 25vw;
-    }
-}
-@media (min-width: 1200px){
-    .menu{
-        width: 20vw;
-    }
-}
-@media (min-width: 1400px){
-    .menu{
-        width: 15vw;
+        background-color: var(--verde) !important;
+        padding: 15px 10px;
     }
 }

@@ -39,3 +39,22 @@
 .category fieldset{
     border-color: var(--violeta) !important;
 }
+
+@media (min-width: 500px){
+    .bannerImageContainer{
+        height: 45vh;
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .productListContainer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 1366px){
+    .bannerImageContainer{
+        height: 55vh;
+    }
+}
