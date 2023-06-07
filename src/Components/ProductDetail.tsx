@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { decrement, increment, productQtyInCartSelector } from '../../store/features/cartSlice';
 import Link from 'next/link';
+import Router from 'next/router';
 
 interface ratingObject{
   rate: number;
@@ -60,6 +61,15 @@ export default function ProductDetail(props:propList) {
         </div>
     }
   }
+
+  function buyNow (): void {
+    if(status === 'unauthenticated'){
+      Router.replace('/users/login')
+    } else if(status === 'authenticated'){
+      dispatch(increment(props));
+      Router.replace('/users/cart')
+    }
+  }
   //--REDUX SECTION
 
   let priceWithQty;
@@ -98,7 +108,7 @@ export default function ProductDetail(props:propList) {
               <p>Total price: $ <strong>{priceWithQty}</strong></p>
             </div>
             <div className={styles.actionButtons}>
-              <button className={styles.buyNow}>Buy Now</button>
+              <button className={styles.buyNow} onClick={() => buyNow()}>Buy Now</button>
               {qtyComponent}
               {qtyWithAmountComponent}
             </div>

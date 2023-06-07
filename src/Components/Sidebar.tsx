@@ -66,6 +66,20 @@ export default function SidebarComponent() {
         userLoginProfile = <Link href={'/users/profile'}><FaUserCircle className={styles.icon}/></Link>
     }
 
+    let cartIcon;
+    if ( status === 'unauthenticated' ) {
+        cartIcon =                
+            <div className={styles.headerCartContainer}>
+                <Link href='/users/login'><AiOutlineShoppingCart className={styles.icon}/></Link>
+            </div>
+    } else if ( status === 'authenticated') {
+        cartIcon =                 
+            <div className={styles.headerCartContainer}>
+                <Link href='/users/cart'><AiOutlineShoppingCart className={styles.icon}/></Link>
+                {!!totalItems && (<p className={styles.headerCartNumber}></p>)}
+            </div>
+    }
+
     return (
         <header className={styles.header}>
             {/* Menu SIDEBAR */}
@@ -104,6 +118,7 @@ export default function SidebarComponent() {
                 <Link href='https://github.com/mateocampillo' target='_blank'><BsGithub className={styles.icon}/></Link>
                 <Link href='https://www.linkedin.com/in/mateocampillo/' target='_blank'><BsLinkedin className={styles.icon}/></Link>
                 {userLoginProfile}
+                {cartIcon}
             </div>
         </header>
     )

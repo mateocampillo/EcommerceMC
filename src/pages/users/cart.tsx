@@ -39,15 +39,25 @@ const Cart: NextPage = (): JSX.Element => {
         }
         if (status === 'authenticated'){
             let name = document.getElementById('inputFullName') as HTMLInputElement;
-            name.defaultValue = data.user.name;
+            if (name) {
+                name.defaultValue = data.user.name;
+            }
             let email = document.getElementById('inputEmail') as HTMLInputElement;
-            email.defaultValue = data.user.email;
+            if (email) {
+                email.defaultValue = data.user.email;
+            }
             let streetName = document.getElementById('inputStreetName') as HTMLInputElement;
-            streetName.defaultValue = data.user.address.street_name;
+            if (streetName) {
+                streetName.defaultValue = data.user.address.street_name;
+            }
             let streetAddress = document.getElementById('inputStreetAddress') as HTMLInputElement;
-            streetAddress.defaultValue = data.user.address.street_address;
+            if (streetAddress) {
+                streetAddress.defaultValue = data.user.address.street_address;
+            }
             let city = document.getElementById('inputCity') as HTMLInputElement;
-            city.defaultValue = data.user.address.city;
+            if (city) {
+                city.defaultValue = data.user.address.city;
+            }
         }
     }, [status, data]);
 
